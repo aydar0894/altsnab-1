@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+      @field_values = CategoryFieldValue.where(item_id: @item.id).select{ |fv| !fv.category_field.nil? }
   end
 
   # GET /items/new
@@ -19,6 +20,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+      @field_values = CategoryFieldValue.where(item_id: @item.id).select{ |fv| !fv.category_field.nil? }
   end
 
   # POST /items

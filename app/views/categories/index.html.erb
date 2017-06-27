@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Category</th>
+      <th>Parent category</th>
       <th>Is leaf</th>
       <th colspan="3"></th>
     </tr>
@@ -16,7 +16,7 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
-        <td><%= category.category %></td>
+        <td><%= category.parent_category&.name %></td>
         <td><%= category.is_leaf %></td>
         <td><%= link_to 'Show', category %></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>

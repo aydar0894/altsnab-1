@@ -12,12 +12,21 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @item.category %>
+  <%= @item.category.name %>
 </p>
 
 <p>
   <strong>Price:</strong>
   <%= @item.price %>
+</p>
+
+<p>
+  <strong>Fields:</strong>
+  <br>
+  <% @field_values.each do |field_value| %>
+    <%= "#{field_value.field.name}: #{field_value.value}" %>
+    <br>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |

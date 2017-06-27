@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Category Fields</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Field</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @category_fields.each do |category_field| %>
+      <tr>
+        <td><%= category_field.category %></td>
+        <td><%= category_field.field %></td>
+        <td><%= link_to 'Show', category_field %></td>
+        <td><%= link_to 'Edit', edit_category_field_path(category_field) %></td>
+        <td><%= link_to 'Destroy', category_field, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Category Field', new_category_field_path %>

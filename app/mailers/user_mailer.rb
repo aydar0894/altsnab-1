@@ -2,7 +2,7 @@ class UserMailer < ApplicationMailer
 
 	default from: 'noreply@altsnab.com'
 
-	#layout "mailer"
+	layout "mailer"
 	def mailer(user, pass)
 	    @user = user
 	    @pass = pass

@@ -1,0 +1,32 @@
+= form_for(category) do |f|
+  - if category.errors.any?
+    #error_explanation
+      h2
+        = pluralize(category.errors.count, "error")
+        |  prohibited this category from being saved:
+      ul
+        - category.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :parent_category_id
+    = f.select(:parent_category_id, Category.all.map{ |t| [t.name, t.id] unless t.id == category.id }, {}, class: "form-control")
+  .field
+    = f.label :is_leaf
+    = f.check_box :is_leaf
+  #field
+    = f.label :category_fields, "Поля", class: "control-label"
+    div
+      - counter = 1
+      = f.fields_for :category_fields do |category_field|
+        = counter
+        - @field = category_field.object.field
+        = render 'category_field_fields', f: category_field
+        - counter = counter + 1
+      .links
+        = link_to_add_association "Добавить поле".html_safe, f, :category_fields
+  .actions
+    = f.submit

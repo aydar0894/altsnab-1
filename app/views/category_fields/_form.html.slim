@@ -1,0 +1,18 @@
+= form_for(category_field) do |f|
+  - if category_field.errors.any?
+    #error_explanation
+      h2
+        = pluralize(category_field.errors.count, "error")
+        |  prohibited this category_field from being saved:
+      ul
+        - category_field.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = f.label :category_id
+    = f.text_field :category_id
+  .field
+    = f.label :field_id
+    = f.text_field :field_id
+  .actions
+    = f.submit

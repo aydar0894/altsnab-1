@@ -1,0 +1,27 @@
+p#notice
+  = notice
+h1
+  | Category Fields
+table
+  thead
+    tr
+      th
+        | Category
+      th
+        | Field
+      th[colspan="3"]
+  tbody
+    - @category_fields.each do |category_field|
+      tr
+        td
+          = category_field.category
+        td
+          = category_field.field
+        td
+          = link_to 'Show', category_field
+        td
+          = link_to 'Edit', edit_category_field_path(category_field)
+        td
+          = link_to 'Destroy', category_field, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Category Field', new_category_field_path

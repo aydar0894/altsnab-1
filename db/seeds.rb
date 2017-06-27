@@ -6,7 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name: 'Administrator', email: 'admin@altsnab.ru', password: 'admin_altsnab', role: '1')
+users = User.find_by(role: '1')
+if users.nil?
+    User.create(name: 'Administrator', email: 'admin@altsnab.ru', password: 'admin_altsnab', role: '1')
+end
 
 #
 #

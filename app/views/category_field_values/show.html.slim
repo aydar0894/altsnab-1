@@ -1,0 +1,17 @@
+p#notice
+  = notice
+p
+  strong
+    | Item:
+  = @category_field_value.item
+p
+  strong
+    | Category field:
+  = @category_field_value.category_field
+p
+  strong
+    | Value:
+  = @category_field_value.value
+= link_to 'Edit', edit_category_field_value_path(@category_field_value)
+|  | 
+= link_to 'Back', category_field_values_path

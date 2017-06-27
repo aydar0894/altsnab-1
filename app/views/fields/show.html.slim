@@ -1,0 +1,13 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @field.name
+p
+  strong
+    | Description:
+  = @field.description
+= link_to 'Edit', edit_field_path(@field)
+|  | 
+= link_to 'Back', fields_path

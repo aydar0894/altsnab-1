@@ -1,0 +1,13 @@
+p#notice
+  = notice
+p
+  strong
+    | Category:
+  = @category_field.category
+p
+  strong
+    | Field:
+  = @category_field.field
+= link_to 'Edit', edit_category_field_path(@category_field)
+|  | 
+= link_to 'Back', category_fields_path

@@ -1,0 +1,28 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @item.name
+p
+  strong
+    | Description:
+  = @item.description
+p
+  strong
+    | Category:
+  = @item.category.name
+p
+  strong
+    | Price:
+  = @item.price
+p
+  strong
+    | Fields:
+  br
+  - @field_values.each do |field_value|
+    = "#{field_value.field.name}: #{field_value.value}"
+    br
+= link_to 'Edit', edit_item_path(@item)
+|  | 
+= link_to 'Back', items_path

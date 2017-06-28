@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 if PaymentInformation.count == 0
    paym =  PaymentInformation.new(payment_account: '123456789',bank_name: 'Сбербанк',bik: '555555555',bank_correspondent_account: '999999999')
    jurast =  JuristicDocument.new(
@@ -24,12 +23,10 @@ if PaymentInformation.count == 0
     paym.save()
     jurast.save()
     User.create(juristic_document_id: paym.id, payment_information_id: jurast.id, first_name: 'Николай',middle_name: 'Викторович',last_name: 'Иванов', email: 'n.ivanov@mail.ru', password: '123321', role: '0')
-
 end
 
-users = User.find_by(role: '1')
-if users.nil?
-    User.create(name: 'Administrator', email: 'admin@altsnab.ru', password: 'admin_altsnab', role: '1')
+if User.find_by(role: '1').nil?
+    User.create(first_name: 'Админ', middle_name: 'Админович',last_name: 'Админов', email: 'admin@altsnab.ru', password: 'admin_altsnab', role: '1')
 end
 
 #

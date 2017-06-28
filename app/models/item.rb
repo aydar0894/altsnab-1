@@ -9,4 +9,12 @@ class Item < ApplicationRecord
     self.price.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse
   end
 
+  def fixed_length_description
+    if self.description&.length > 60
+      return self.description[0..60] + '..'
+    else
+      return self.description
+    end
+  end
+
 end

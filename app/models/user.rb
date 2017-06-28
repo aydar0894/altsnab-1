@@ -7,4 +7,6 @@ class User < ApplicationRecord
   def is_admin?
     return self.role == 1
   end
+  has_one :payment_information
+  has_one :juristic_document
 end

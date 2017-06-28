@@ -7,6 +7,21 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def catalog
+    @child_categories = {}
+    @all_categories = Category.all
+    @head_categories = @all_categories.select { |cat| cat.parent_category_id.nil? }
+    @all_categories.each do |cat|
+      if !cat.parent_category_id.nil?
+        if @child_categories[cat.parent_category_id].nil?
+          @child_categories[cat.parent_category_id] = [cat]
+        else
+          @child_categories[cat.parent_category_id] << cat
+        end
+      end
+    end
+  end
+
   # GET /items/1
   # GET /items/1.json
   def show

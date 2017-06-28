@@ -1,12 +1,16 @@
+/ = link_to 'Log Out', destroy_user_session_path, method: :delete
 doctype html
-html
+html lang="ru" 
   head
-    title
-      | Altsnab
+    meta charset="UTF-8" /
+    title ОдинАльянс - Главная
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  ul.hmenu
-    = link_to 'Log Out', destroy_user_session_path, method: :delete
   body
-    = yield
+    = render 'layouts/navbar'
+    .main.uk-container
+      .wrapper
+        = yield
+        
+    = render 'layouts/footer'

@@ -1,6 +1,113 @@
-h2
-  | Sign up
-= form_for(:user, :url => registration_path(:user)) do |f|
-  = f.text_field :email
-  = f.text_field :name
-  = f.submit 'Sign up'
+.main.uk-container
+  .wrapper
+    ul.uk-hidden uk-switcher="animation:uk-animation-fade;connect:.forms" 
+      li
+        a href="#"  Быстрая регистрация
+      li
+        a href="#"  Расширенная регистрация
+    .uk-switcher.forms.uk-margin
+      = form_for(:user, :url => registration_path(:user), html: {class: 'tm-form-registration'}) do |f|
+        fieldset.uk-fieldset
+          legend.uk-legend Быстрая регистрация
+          .uk-margin
+            = f.text_field :name, class: 'uk-input', required: true, placeholder: 'Ваше имя'
+          .uk-margin
+            = f.email_field :email, class: 'uk-input', required: true, placeholder: 'E-mail'
+          .uk-margin
+            img src="#{image_url 'captcha.jpg'}" /
+          .uk-margin.uk-grid-small.uk-child-width-auto.uk-text-left uk-grid="" 
+            label
+              input.uk-checkbox type="checkbox" /
+              | Согласен с условиями
+              a href="#"  Лицензионного соглашения
+          .uk-margin-medium-top
+            button.uk-button.uk-button-summer.uk-form-width-medium type="submit"  Зарегистрироваться
+            a.uk-button.uk-button-emerald.uk-margin-left uk-switcher-item="next"  Расширенная регистрация
+      form.tm-form-registration
+        fieldset.uk-fieldset
+          legend.uk-legend Расширенная регистрация
+          .uk-margin
+            input.uk-input.required placeholder=("* Логин") type="text" /
+          .uk-margin.uk-grid-small.uk-child-width-1-2 uk-grid="" 
+            div
+              .uk-inline.uk-width-1-1
+                span.uk-form-icon.near-password uk-icon=("icon: lock") 
+                input.uk-input.required placeholder=("* Пароль") type="password" /
+            div
+              .uk-inline.uk-width-1-1
+                span.uk-form-icon.near-password uk-icon=("icon: lock") 
+                input.uk-input.required placeholder=("* Подтвердите пароль") type="password" /
+          .uk-margin
+            input.uk-input.required placeholder=("* Электронный адрес") type="text" /
+          .uk-margin
+            input.uk-input.required placeholder=("* Имя") type="text" /
+          .uk-margin
+            input.uk-input placeholder="Фамилия" type="text" /
+          .uk-margin
+            input.uk-input placeholder="Отчество" type="text" /
+          .uk-margin
+            input.uk-input.required placeholder=("* Контактный телефон") type="text" /
+          .uk-margin.uk-text-left.click-me.label
+            label
+              input.uk-checkbox type="checkbox" /
+              | Заполнить юридические сведения
+              span.uk-text-small.uk-display-block Не обязательно
+            .extra
+              .uk-margin
+                label Полное наименование организации
+                input.uk-input placeholder=("Пример: Общество с ограниченной ответственностью 'Луч'") type="text" /
+              .uk-margin
+                label Краткое наименование организации
+                input.uk-input placeholder=("Пример: ООО 'Луч'") type="text" /
+              .uk-margin
+                label Генеральный директор
+                input.uk-input placeholder=("Иванов Иван Иванович") type="text" /
+              .uk-margin
+                label Юридический адрес
+                input.uk-input placeholder=("123456 РФ, Пермская область, г. Пермь, ул. Пушкина, дом Колотушкина") type="text" /
+              .uk-margin
+                label Почтовый адрес
+                input.uk-input placeholder=("123456 РФ, Пермская область, г. Пермь, ул. Пушкина, дом Колотушкина") type="text" /
+              .uk-margin
+                label ИНН
+                input.uk-input placeholder="12700111" type="text" /
+              .uk-margin
+                label КПП
+                input.uk-input placeholder="987450311" type="text" /
+              .uk-margin
+                label ОГРН
+                input.uk-input placeholder="34535375765433" type="text" /
+              .uk-margin
+                label ОКПО
+                input.uk-input placeholder="02428896" type="text" /
+              .uk-margin
+                label ОКАТО
+                input.uk-input placeholder="61401000000" type="text" /
+          .uk-margin.uk-text-left.click-me.label
+            label
+              input.uk-checkbox name="pay-info" type="checkbox" /
+              | Заполнить платежные данные компании
+              span.uk-text-small.uk-display-block Не обязательно
+            .extra
+              .uk-margin
+                label Расчетный счет
+                input.uk-input placeholder="40552650206000095236" type="text" /
+              .uk-margin
+                label Полное наименование банка
+                input.uk-input placeholder=("Пример: АО 'Россельхозбанк' , г. Москва") type="text" /
+              .uk-margin
+                label БИК
+                input.uk-input placeholder=("Пример: 054536968") type="text" /
+              .uk-margin
+                label Корреспондентский счет банка
+                input.uk-input placeholder=("Пример: 45901810600006900754") type="text" /
+          .uk-margin
+            img src="#{ image_url 'captcha.jpg'}" /
+          .uk-margin.uk-grid-small.uk-child-width-auto.uk-text-left uk-grid="" 
+            label
+              input.uk-checkbox type="checkbox" /
+              | Согласен с условиями
+              a href="#"  Лицензионного соглашения
+          .uk-margin-medium-top
+            button.uk-button.uk-button-summer.uk-form-width-medium type="submit"  Зарегистрироваться
+            a.uk-button.uk-button-emerald.uk-margin-left uk-switcher-item="next"  Быстрая регистрация

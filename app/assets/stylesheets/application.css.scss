@@ -1,0 +1,183 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @font-face {
+     font-family: 'Rubik-Regular';
+     src: font-url('Rubik-Regular.eot?#iefix') format('embedded-opentype'),  font-url('Rubik-Regular.woff') format('woff'), font-url('Rubik-Regular.ttf')  format('truetype'), font-url('Rubik-Regular.svg#Rubik-Regular') format('svg');
+     font-weight: normal;
+     font-style: normal;
+ }
+ @font-face {
+     font-family: 'Rubik-Medium';
+     src: font-url('Rubik-Medium.eot?#iefix') format('embedded-opentype'),  font-url('Rubik-Medium.woff') format('woff'), font-url('Rubik-Medium.ttf')  format('truetype'), font-url('Rubik-Medium.svg#Rubik-Medium') format('svg');
+     font-weight: normal;
+     font-style: normal;
+ }
+
+ html{background:#f3f3f3;font-family:"Rubik-Regular",sans-serif;font-size:13px;font-weight:400;color:#8184a1;text-align:left;line-height:1.3}
+ .uk-container{max-width:1440px}
+ .main{margin:25px auto}
+ a{-webkit-transition:.1s ease-in-out;transition:.1s ease-in-out}
+ b{font-weight:normal;font-family: Rubik-Medium,sans-serif}
+
+ header{background:#fff;box-shadow:0 7px 9px -5px rgba(0,0,0,0.10);z-index:10}
+ header a{color:#000}
+ header .tm-smallmenu{background:#f3f3f3;padding:5px 15px}
+ header .dropdown-login + .uk-dropdown{width:310px}
+ header .one a{max-width:300px;height:100%;display:block}
+ header .one a img{margin:10px 0 0;max-height:48px;width:188px}
+ header .three{text-align:right}
+ header .three > div{max-width:220px;width:100%;margin-top:12px;display:inline-block}
+ header .three span img{width:37px;height:40px;margin-top:2px}
+ header .three .phone div{font:16px/20px Rubik-Regular,sans-serif;color:#000}
+ header .three .phone div span{font:21px/21px Rubik-Medium,sans-serif;color:#000}
+ header .search-trigger{color:#000;line-height:66px;padding:0 15px;cursor:pointer;display:inline-block;font-size:18px}
+ header .search-trigger:hover{background:#575b71;color:#fff}
+ header .search{display:none;height:65px;float:left;padding:10px 10px 10px 0;box-sizing:border-box}
+ header .search input{border:2px solid #e6e6e6;height:100%;padding:10px 25px;font-size:16px;border-radius:1px}
+
+ .tm-form-registration{max-width:500px;margin:25px auto;text-align:center}
+ .tm-form-registration legend{color:#000;font:400 27px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+ .tm-form-registration input[type=text]{padding-left:14px;padding-right:14px}
+ .tm-form-registration input[type=checkbox]{margin-right:5px}
+ .tm-form-registration label span{margin-left:24px;color:#9e9e9e}
+ .tm-form-registration .extra{display:none;width:100%;margin:20px 0;padding:10px;background:#efefef;box-sizing:border-box}
+ .tm-form-registration .label.active + .extra{display:block}
+ .tm-form-registration input.empty{border-color:red}
+ .tm-form-registration input.full{border-color:#77b96b}
+
+ .tm-form-okay{max-width:600px;margin:45px auto;text-align:center}
+
+ #customer_login{max-width:550px;width:100%;margin:55px 0}
+ #customer_login label{position:absolute;top:0;left:0;height:100%;width:130px;line-height:56px;font-size:12px;text-align:left;text-transform:uppercase;color:#747475;border-right:1px solid #ccc}
+ #customer_login label .text{margin-left:50px}
+ #customer_login .uk-inline input{padding-left:145px}
+ #customer_login .uk-form-icon{left:10px}
+
+ #nav{background:none}
+ #nav .uk-navbar-nav > li > a{height:66px;color:#000;font:14px Rubik-Medium,sans-serif}
+ #nav .uk-navbar-nav > li.uk-active > a{background: #ababab;color:#fff}
+ #nav .uk-navbar-nav > li:hover > a{background:#575b71;color:#fff}
+ #nav .uk-navbar-dropdown{padding:8px 0}
+ #nav .uk-navbar-dropdown-nav li a{padding:5px 15px;color:#575b71;font-size:13px}
+ #nav .uk-navbar-dropdown-nav li:hover a{background:#575b71;color:#fff}
+
+ .uk-button.uk-default{border:1px solid #dee0ee;border-radius:2px;line-height:30px}
+ .uk-button.uk-default:hover{background:#575b71;color:#fff}
+
+ .uk-search.from-header{background:#fff;border-radius:2px;padding:5px 0}
+ .uk-search.from-header button{padding:7px 10px;height:auto;line-height:normal;background:#fff;border:1px solid #dee0ee;border-radius:2px;position:absolute;top:10px;right:6px}
+ .uk-search.from-header button:hover{background:#575b71;color:#fff;border-color:#575b71}
+ .uk-search.from-header input{border:none;padding-right:60px}
+
+ aside{width:230px}
+ aside .tm-list-category li,aside .uk-accordion-content a{display:block;margin:0!important;background:#fff;font-weight:300;font-size:14px;line-height:1.2em;color:#2f2f2f;border-top:1px solid rgba(0,0,0,.1)}
+ aside .tm-list-category li h4,aside .uk-accordion-content a{padding:11px 15px}
+ aside .uk-accordion-content ul{padding:0}
+ aside .uk-accordion-content a{background:#EAEAEA;font-size:13px}
+ aside .uk-accordion-content li{border:none}
+ aside .uk-accordion-content li:hover a{background:#f3f3f3}
+ aside .uk-accordion-content li:first-child a{box-shadow:inset 0 4px 3px -4px rgba(0,0,0,0.10)}
+ aside .uk-accordion-content li:last-child a{box-shadow:inset 0 -4px 3px -4px rgba(0,0,0,0.16)}
+ aside .tm-list-category li.uk-open,aside .tm-list-category li:hover{background:#fff;-webkit-transition:.1s ease-in-out;transition:.1s ease-in-out}
+ aside .tm-list-category li:hover h4,aside .tm-list-category li.uk-open a,aside .tm-list-category li:hover a{text-decoration:none;color:#000}
+ aside .tm-list-category li.uk-open h4{color: #009c9a;font-family: Rubik-Medium;}
+ aside .uk-accordion-title{font:14px/18px Rubik-Regular,sans-serif;position:relative;padding-right:20px;display:block;color:#575b71}
+ aside .uk-accordion-title:after{position:absolute;top:50%;right:4px;margin-top:-9px}
+ aside .not-parent .uk-accordion-title:after{display:none}
+ aside .uk-accordion-title:after{background-image:url("../img/awesome/chevron-down.png")}
+ aside .uk-open .uk-accordion-title:after{background-image:url("../img/awesome/chevron-up.png")}
+
+ .tm-list-leader li{border:2px solid #edeef8;border-radius:2px;margin:2px 0!important;background:#fff;position:relative}
+ .tm-list-leader li a{font-size:13px;color:#575b71;display:block;padding:8px 10px 8px 50px;text-decoration:underline}
+ .tm-list-leader li:hover{border:2px solid #cbd9da;background:#fff}
+
+ .badge{position:absolute;z-index:5;background:#000;color:#fff;left:-2px;width:42px;height:22px;text-align:center;top:50%;margin-top:-10px;line-height:22px;font-size:11px}
+ .badge:after{content:"";border-width:0;border-style:solid;width:0;height:0;position:absolute;right:-6px;top:0;border-color:#000 transparent #000 #000}
+ .badge.new{background:#009933;line-height:20px}
+ .badge.new:after{border-color:#a1c223 transparent #a1c223 #a1c223}
+ .badge.hit{background:#61b4ff;line-height:20px}
+ .badge.hit:after{border-color:#61b4ff transparent #61b4ff #61b4ff}
+ .badge.discount{background:#9d06d7}
+ .badge.discount:after{border-color:#9d06d7 transparent #9d06d7 #9d06d7}
+
+ .uk-subnav.tm-product-swbutton li:not(:first-child){padding-left:10px}
+ .uk-subnav.tm-product-swbutton li a{font:14px Rubik-Medium,sans-serif;text-transform:uppercase;padding:10px 16px;border-radius:2px;border:2px solid #dbdbdb;color:#626262}
+ .uk-subnav.tm-product-swbutton li:hover a{background:#e8e8e8;border-color:#e8e8e8}
+ .uk-subnav.tm-product-swbutton li.uk-active a{background:#f3f3f3;border-color:#007681;color:#010101}
+ .uk-subnav.tm-product-swbutton li.uk-active:after{content:"";position:absolute;bottom:-8px;left:50%;right:50%;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #007681}
+
+ .product{position:relative;margin-bottom:15px}
+ .product .wrapper{position:relative;border-radius:2px;font:14px Rubik-Medium,sans-serif;box-shadow:0 0 5px rgba(246,244,244,0.1);background:#fff}
+ .product .image{position:relative;display:block}
+ .product .image:after{content:'';width:100%;height:100%;background:rgba(0,0,0,0.16);position:absolute;z-index:2;top:0;left:0;right:0;-webkit-transition:.1s ease-in-out;transition:.1s ease-in-out}
+ .product img{position:relative;z-index:1;width:100%}
+ .product .stars{position:absolute;z-index:3;left:15px;bottom:15px;font:14px Arial,sans-serif;color:#fff}
+ .product .stars span{width:16px;height:16px;display:inline-block;vertical-align:top;background:url(../img/awesome/star.svg) no-repeat center / cover}
+ .product .stars span.grey{background:url(../img/awesome/stargrey.svg) no-repeat center / cover}
+ .product .badge{width:auto;padding:0 5px;top:25px;box-shadow:1px 1px 1px rgba(0,0,0,0.20)}
+ .product .info{border:1px solid #efefef;border-top:none}
+ .product .href{min-height:36px;padding:14px 6% 10px;display:block;color:#202020}
+ .product .price{color:#007681;font-size:16px;padding:0 6%;margin-top:15px}
+ .product .introtext{max-height:35px;overflow:hidden;color:#5b5b5b;font:13px Tahoma,sans-serif;padding:0 6%;margin-bottom:7px}
+ .product .introtext.full{max-height:none;margin-bottom:0}
+ .product .icons{padding:0 4%;margin:20px 0 15px}
+ .product .icons img{max-width:37px}
+ .product .icons span{color:#2f2f2f;font-size:13px;display:inline-block;vertical-align:middle}
+ .product .icons hr{width:83%;margin:2px 0;border-color:#58595b}
+ .product .icons div > *{width:50%}
+ .product .buttons{border-top:1px solid #e9e9e9;text-align:center}
+ .product .buttons a{border-left:1px solid #e9e9e9;padding:0;color:#007681}
+ .product .buttons a:first-child{border:none}
+ .product .buttons a:hover{background:#e0eeef;color:#000;border-color:#e0eeef}
+ .product .buttons span{display:inline-block;width:20px;height:20px;vertical-align:middle}
+ .product .buttons .cart{background:url(../img/awesome/shopping-cart.svg) no-repeat center / cover}
+ .product .buttons .heart{background:url(../img/awesome/heart.svg) no-repeat center / cover}
+ .product .buttons .goproduct{background:url(../img/awesome/information.svg) no-repeat center / cover}
+ .product:hover .wrapper{box-shadow:0 0 5px rgba(0,0,0,0.12)}
+ .product:hover .image:after{background:rgba(0,0,0,0.07)}
+ .product:hover .href{color:#000}
+
+ .tm-categories a{margin-bottom:25px;text-align:center}
+ .tm-categories a:hover{text-decoration:none}
+ .tm-categories h2{margin:-25px auto 0;text-align:center;font:20px Rubik-Medium,sans-serif;display:inline-block}
+ .tm-categories a:hover h2{border-bottom:1px dashed rgba(0,0,0,0.37);line-height:19px}
+ .tm-categories img{-moz-transition:all .3s ease-out;-o-transition:all .3s ease-out;-webkit-transition:all .3s ease-out;-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:grayscale(100%);filter:gray;-webkit-transform:scale(0.9);-moz-transform:scale(0.9);-o-transform:scale(0.9)}
+ .tm-categories a:hover img{-webkit-filter:none;-moz-filter:none;-ms-filter:none;-o-filter:none;filter:none;filter:none;-webkit-transform:scale(1.0);-moz-transform:scale(1.0);-o-transform:scale(1.0)}
+
+ footer{background:#333}
+ footer .logo img{width:200px}
+ footer > div{padding-top:35px;padding-bottom:10px;color:#fff}
+ footer h4{color:#fff;font-family:"Rubik-Medium",sans-serif}
+ footer li{margin-top:5px!important;font-size:12px}
+ footer a{color:#fff}
+ footer hr{border-color:#7e7e7e}
+ footer .icons{margin-top:-5px}
+ footer .uk-icon-button{width:32px;height:32px}
+ footer .uk-icon-button > *{max-width:19px;max-height:19px}
+
+ h3{font:18px Rubik-Regular,sans-serif;color:#575b71;margin:5px auto 15px}
+ .uk-button{border-radius:2px}
+ .uk-button-emerald{color:#fff;background:#35a8a6;border-radius:2px}
+ .uk-button-emerald:hover,.uk-button-emerald:focus{background:#299896;color:#fff}
+ .uk-button-summer{background:#77b96b;color:#fff}
+ .uk-button-summer:hover,.uk-button-summer:focus{background:#62a256;color:#fff}
+ .uk-button-long{border:1px solid #e5e5e5;color:#000}
+ .uk-button-long:hover,.uk-button-long:focus{border-color:#b2b2b2;background:#fff;color:#000}
+ .uk-list-inline{padding:0;list-style:none}
+ .uk-list-inline li{display:inline-block;margin:0 5px}
+ .uk-list-inline li:last-child{margin-right:0}
+ .uk-icon.near-password{z-index:7;pointer-events: all;}

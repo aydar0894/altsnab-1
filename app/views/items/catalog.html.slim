@@ -135,13 +135,13 @@
             .wrapper
               = link_to item_path(item), class: 'image'
                 = image_tag item.image.url(:medium), height:'200', width: '280', alt: ''
-              .stars
-                span
-                span
-                span
-                span.grey
-                span.grey
-                | (3)
+                .stars
+                  span
+                  span
+                  span
+                  span.grey
+                  span.grey
+                  | (3)
               .info
                 = link_to item.name, item_path(item), class: 'href'
                 .introtext = item.description

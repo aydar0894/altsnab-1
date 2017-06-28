@@ -1,0 +1,362 @@
+.uk-grid.uk-grid-medium
+  aside
+    h3 Каталог продукции
+    ul.tm-list-category.uk-margin-remove uk-accordion=("multiple: true") 
+      - @head_categories.each_with_index do |cat, index|
+        - if index > 0
+          li
+            h4.uk-accordion-title = cat.name
+            .uk-accordion-content.uk-margin-remove
+              ul
+                - @child_categories[cat.id].each do |subcat| 
+                  li
+                    a href="#" = subcat.name
+        - else
+          li.uk-open
+            h4.uk-accordion-title = cat.name
+            .uk-accordion-content.uk-margin-remove
+              ul
+                - @child_categories[cat.id].each do |subcat| 
+                  li
+                    a href="#" = subcat.name
+      / li.uk-open
+      /   h4.uk-accordion-title Спецтехника для нефти и газа
+      /   .uk-accordion-content.uk-margin-remove
+      /     ul
+      /       li
+      /         a href="#"  Топливозаправщики и автоцистерны на шасси КАМАЗ
+      /       li
+      /         a href="#"  Мобильные подогреватели
+      /       li
+      /         a href="#"  Передвижная паропромысловая установка ППУ
+      /       li
+      /         a href="#"  Передвижные мобильные комплексы
+      /       li
+      /         a href="#"  Цементировочный агрегат ЦА 320 КАМАЗ
+      /       li
+      /         a href="#"  Агрегат (установка) для депарафинизации скважин
+      / li
+      /   h4.uk-accordion-title Тягачи, прицепы и автопоезда
+      /   .uk-accordion-content.uk-margin-remove
+      /     ul
+      /       li
+      /         a href="#"  Седельные тягачи
+      /       li
+      /         a href="#"  Прицепы и полуприцепы
+      /       li
+      /         a href="#"  Автопоезда и автофургоны
+      / li
+      /   h4.uk-accordion-title Строительная техника
+      /   .uk-accordion-content.uk-margin-remove
+      /     ul
+      /       li
+      /         a href="#"  Самосвалы
+      /       li
+      /         a href="#"  Самосвальные полуприцепы Grunwald
+      /       li
+      /         a href="#"  Автокраны
+      /       li
+      /         a href="#"  Автобетоносмесители
+      /       li
+      /         a href="#"  Автомобильный бетононасос
+      / li
+      /   h4.uk-accordion-title Специальная техника
+      /   .uk-accordion-content.uk-margin-remove
+      /     ul
+      /       li
+      /         a href="#"  Снегоболотоход БОРЕЙ-3301
+      /       li
+      /         a href="#"  Бортовые автомобили с КМУ
+      /       li
+      /         a href="#"  Бурильно-крановые машины
+      /       li
+      /         a href="#"  Вахтовые автобусы на базе КАМАЗ
+      /       li
+      /         a href="#"  Грузопассажирский автобус КАМАЗ (ПАЗ)
+      / li
+      /   h4.uk-accordion-title Комплектация и переоборудование
+      /   .uk-accordion-content.uk-margin-remove
+      /     ul
+      /       li
+      /         a href="#"  Системы мониторинга
+      /       li
+      /         a href="#"  Цифровые тахографы на грузовые автомобили
+      /       li
+      /         a href="#"  3Переоборудование под перевозку опасных грузов
+      /       li
+      /         a href="#"  Жидкостные отопители
+      /       li
+      /         a href="#"  Воздушные отопители
+      /       li
+      /         a href="#"  Крано-манипуляторная установка
+      /       li
+      /         a href="#"  ГЛОНАСС
+      /       li
+      /         a href="#"  Переоборудование на односкатную
+      /       li
+      /         a href="#"  Отопители
+      /       li
+      /         a href="#"  Запчасти
+    ul.tm-list-leader.uk-list
+      li
+        a href="#" 
+          span.badge.new
+            i uk-icon=("icon: tag; ratio: 1") 
+          | Новинки
+      li
+        a href="#" 
+          span.badge.hit
+            i uk-icon=("icon: future; ratio: 0.8") 
+          | Под заказ
+      li
+        a href="#" 
+          span.badge.discount> %
+          | Скидки
+  .uk-width-expand
+    / .jcarousel-wrapper
+    /   .jcarousel
+    /     ul
+    /       li
+    /         img alt="" height="304" src="#{image_url 'banners/slide-1.jpg'}" width="958" /
+    /   a.jcarousel-control-prev href="#"  &lsaquo;
+    /   a.jcarousel-control-next href="#"  &rsaquo;
+    /   p.jcarousel-pagination
+    ul.uk-subnav.uk-subnav-pill.tm-product-swbutton uk-switcher="animation:uk-animation-fade;connect:.tm-product-switch" 
+      li
+        a href="#"  Новинки
+      li
+        a href="#"  Под заказ
+      li
+        a href="#"  Скидки
+    .uk-switcher.tm-product-switch.uk-margin
+      .uk-grid-small class="uk-child-width-1-4@l" uk-grid="" 
+        .product
+          .wrapper
+            a.image href="#" 
+              img alt="" height="200" src="#{image_url 'products/1.jpg'}" width="280" /
+            .stars
+              span
+              span
+              span
+              span.grey
+              span.grey
+              | (3)
+            .info
+              a.href href="#"  Автотопливозаправщики на шасси КАМАЗ 65115
+              .introtext
+                | Данный автотопливозаправщик был произведен для транспортировки до трёх видов светлых нефтепродуктов. Автоцистерна оснащена раздаточным узлом для дозированной заправки топливом любой техники. Дополнительно был смонтирован насос СЦЛ-00
+                | с карданным приводом для заполнения/слива топлива.
+              .price
+                | от
+                span 3 330 000
+                sup руб.
+              .icons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
+                div
+                  img alt="Шасси" src="#{image_url 'awesome/02_shassi.svg'}" /
+                  span 6 x 4
+                div
+                  img alt="Грузоподъемность" src="#{image_url 'awesome/02_weight.svg'}" /
+                  span 20 т.
+                div
+                  img alt="Бензин" src="#{image_url 'awesome/02_benzin.svg'}" /
+                  span Евро 4
+              .buttons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
+                a.uk-button href="" title=("Добавить в Корзину") 
+                  span.cart
+                a.uk-button href="" title=("Добавить в Закладки") 
+                  span.heart
+                a.uk-button href="" title=("Перейти к Товару") 
+                  span.goproduct
+        .product
+          .wrapper
+            a.image href="#" 
+              img alt="" height="200" src="#{image_url 'products/2.jpg'}" width="280" /
+            .stars
+              span
+              span
+              span
+              span.grey
+              span.grey
+              | (3)
+            .info
+              a.href href="#"  Самосвал КАМАЗ-6520
+              .introtext
+                | Данный автотопливозаправщик был произведен для транспортировки до трёх видов светлых нефтепродуктов. Автоцистерна оснащена раздаточным узлом для дозированной заправки топливом любой техники. Дополнительно был смонтирован насос СЦЛ-00
+                | с карданным приводом для заполнения/слива топлива.
+              .price
+                | от
+                span 4 000 000
+                sup руб.
+              .icons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
+                div
+                  img alt="Шасси" src="#{image_url 'awesome/02_shassi.svg'}" /
+                  span 6 x 4
+                div
+                  img alt="Грузоподъемность" src="#{image_url 'awesome/02_weight.svg'}" /
+                  span 20 т.
+                div
+                  img alt="Колесо" src="#{image_url 'awesome/02_koleso.svg'}" /
+                  span Зима
+                  hr/
+                  | Лето
+              .buttons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
+                a.uk-button href="" title=("Добавить в Корзину") 
+                  span.cart
+                a.uk-button href="" title=("Добавить в Закладки") 
+                  span.heart
+                a.uk-button href="" title=("Перейти к Товару") 
+                  span.goproduct
+        .product
+          .wrapper
+            a.image href="#" 
+              img alt="" height="200" src="#{image_url 'products/3.jpg'}" width="280" /
+            .stars
+              span
+              span
+              span.grey
+              span.grey
+              span.grey
+              | (2)
+            .info
+              a.href href="#"  Вахтовый автобус 4208 и 43118 на шасси КАМАЗ (6х6) для ГТА
+              .introtext
+                | Данный автотопливозаправщик был произведен для транспортировки до трёх видов светлых нефтепродуктов. Автоцистерна оснащена раздаточным узлом для дозированной заправки топливом любой техники. Дополнительно был смонтирован насос СЦЛ-00
+                | с карданным приводом для заполнения/слива топлива.
+              .price
+                | от
+                span 5 190 000
+                sup руб.
+              .icons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
+                div
+                  img alt="Шасси" src="#{image_url 'awesome/02_shassi.svg'}" /
+                  span 6 x 4
+                div
+                  img alt="Грузоподъемность" src="#{image_url 'awesome/02_weight.svg'}" /
+                  span 20 т.
+                div
+                  img alt="Двигатель" src="#{image_url 'awesome/02_engine.svg'}" /
+                  span Hyundai
+                  hr/
+                  | D4AL
+              .buttons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
+                a.uk-button href="" title=("Добавить в Корзину") 
+                  span.cart
+                a.uk-button href="" title=("Добавить в Закладки") 
+                  span.heart
+                a.uk-button href="" title=("Перейти к Товару") 
+                  span.goproduct
+        .product
+          .wrapper
+            a.image href="#" 
+              img alt="" height="200" src="#{image_url 'products/4.jpg'}" width="280" /
+            .stars
+              span
+              span
+              span
+              span
+              span.grey
+              | (4)
+            .info
+              a.href href="#"  Установка промысловая 78930А на шасси КАМАЗ-43118-46
+              .introtext
+                | Данный автотопливозаправщик был произведен для транспортировки до трёх видов светлых нефтепродуктов. Автоцистерна оснащена раздаточным узлом для дозированной заправки топливом любой техники. Дополнительно был смонтирован насос СЦЛ-00
+                | с карданным приводом для заполнения/слива топлива.
+              .price
+                | от
+                span 3 330 000
+                sup руб.
+              .icons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
+                div
+                  img alt="Шасси" src="#{image_url 'awesome/02_shassi.svg'}" /
+                  span 6 x 4
+                div
+                  img alt="Грузоподъемность" src="#{image_url 'awesome/02_weight.svg'}" /
+                  span 20 т.
+                div
+                  img alt="Двигатель" src="#{image_url 'awesome/02_engine.svg'}" /
+                  span Hyundai
+                  hr/
+                  | D4AL
+              .buttons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
+                a.uk-button href="" title=("Добавить в Корзину") 
+                  span.cart
+                a.uk-button href="" title=("Добавить в Закладки") 
+                  span.heart
+                a.uk-button href="" title=("Перейти к Товару") 
+                  span.goproduct
+        .product
+          .wrapper
+            a.image href="#" 
+              img alt="" height="200" src="#{image_url 'products/5.jpg'}" width="280" /
+            .info
+              a.href href="#"  Полуприцеп ППЦ - 30 (Т)
+              .price
+                | Узнать
+                span под заказ…
+                sup
+              .introtext Надёжные и недорогие полуприцепы цистерны (ППЦ) от завода ГРАЗ…
+              .buttons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
+                a.uk-button href="" title=("Добавить в Корзину") 
+                  i uk-icon=("icon: cart; ratio: 1") 
+                a.uk-button href="" title=("Добавить в Закладки") 
+                  i uk-icon=("icon: heart; ratio: 1") 
+                a.uk-button href="" title=("Перейти к Товару") 
+                  i uk-icon=("icon: chevron-right; ratio: 1") 
+        .product
+          .wrapper
+            a.image href="#" 
+              img alt="" height="200" src="#{image_url 'products/6.jpg'}" width="280" /
+            .info
+              a.href href="#"  Снегоболотоход БОРЕЙ-3301
+              .price
+                | от
+                span 4 900 000
+                sup руб.
+              .introtext С пневматическими колесами сверхнизкого давления и оптимально подобранной…
+              .buttons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
+                a.uk-button href="" title=("Добавить в Корзину") 
+                  i uk-icon=("icon: cart; ratio: 1") 
+                a.uk-button href="" title=("Добавить в Закладки") 
+                  i uk-icon=("icon: heart; ratio: 1") 
+                a.uk-button href="" title=("Перейти к Товару") 
+                  i uk-icon=("icon: chevron-right; ratio: 1") 
+        .product
+          .wrapper
+            a.image href="#" 
+              img alt="" height="200" src="#{image_url 'products/7.jpg'}" width="280" /
+            .info
+              a.href href="#"  Грузопассажирские автобусы на базе Камаз 5350-12 с кму им-50
+              .price
+                | от
+                span 3 330 000
+                sup руб.
+              .introtext 4-х местное пассажирское сиденье оборудовано трехточечными ремнями…
+              .buttons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
+                a.uk-button href="" title=("Добавить в Корзину") 
+                  i uk-icon=("icon: cart; ratio: 1") 
+                a.uk-button href="" title=("Добавить в Закладки") 
+                  i uk-icon=("icon: heart; ratio: 1") 
+                a.uk-button href="" title=("Перейти к Товару") 
+                  i uk-icon=("icon: chevron-right; ratio: 1") 
+        .product
+          .wrapper
+            a.image href="#" 
+              img alt="" height="200" src="#{image_url 'products/8.jpg'}" width="280" /
+            .info
+              a.href href="#"  Агрегат для депарафинизации АДПМ на шасси КАМАЗ 43118-46
+              .price
+                | от
+                span 4 750 000
+                sup руб.
+              .introtext Возможно использование агрегата для подогрева воды при рабочих параметрах…
+              .buttons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
+                a.uk-button href="" title=("Добавить в Корзину") 
+                  i uk-icon=("icon: cart; ratio: 1") 
+                a.uk-button href="" title=("Добавить в Закладки") 
+                  i uk-icon=("icon: heart; ratio: 1") 
+                a.uk-button href="" title=("Перейти к Товару") 
+                  i uk-icon=("icon: chevron-right; ratio: 1") 
+      div
+        | 2
+      div
+        | 3

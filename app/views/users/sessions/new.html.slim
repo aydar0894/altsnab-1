@@ -1,18 +1,22 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+.uk-text-center
+  = form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'customer_login', class: 'uk-inline-block'}) do |f|
+    h2 Вход в личный кабинет
+    .uk-width-1-1.uk-inline.uk-margin-small-bottom
+      = f.email_field :email, autofocus: true, id: 'customer_email', class: 'uk-input uk-form-large', placeholder: 'Email'
+      label.label-icon.text-left for="customer_email" 
+        span.uk-form-icon uk-icon=("icon: mail; ratio: 1.2") 
+        span.text Email
+    .uk-width-1-1.uk-inline.uk-margin-small-bottom
+      = f.password_field :password, autocomplete: "off", id: 'customer_password', class: 'uk-input uk-form-large', placeholder: 'Пароль'
+      label.label-icon.text-left for="customer_password" 
+        span.uk-form-icon uk-icon=("icon: lock; ratio: 1.2") 
+        span.text Пароль
+    a.uk-display-block href="login-recover.html" title=("Забыли пароль?")  Забыли пароль?
+    button.uk-button.uk-button-emerald.uk-margin-top Войти
+    =< link_to 'Создать аккаунт', new_user_registration_path, class: 'uk-button uk-button-emerald uk-margin-top'
+    p
+      | У вас нет аккаунта,
+      =< link_to 'создать его', new_user_registration_path, id: 'customer_register_link'
+      br/
+      | или
+      a href="/" title=("Вернуться в магазин")  Вернуться в магазин

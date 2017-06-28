@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title
+      | Altsnab
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  ul.hmenu
+    = link_to 'Log Out', destroy_user_session_path, method: :delete
+  body
+    = yield

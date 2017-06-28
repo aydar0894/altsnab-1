@@ -7,20 +7,37 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def catalog
+    @child_categories = {}
+    @all_categories = Category.all
+    @head_categories = @all_categories.select { |cat| cat.parent_category_id.nil? }
+    @all_categories.each do |cat|
+      if !cat.parent_category_id.nil?
+        if @child_categories[cat.parent_category_id].nil?
+          @child_categories[cat.parent_category_id] = [cat]
+        else
+          @child_categories[cat.parent_category_id] << cat
+        end
+      end
+    end
+  end
+
   # GET /items/1
   # GET /items/1.json
   def show
-      @field_values = CategoryFieldValue.where(item_id: @item.id).select{ |fv| !fv.category_field.nil? }
+      @field_values = CategoryFieldValue.joins(:category_field).where(item_id: @item.id, category_fields: { category_id: @item.category_id }).all.select{ |fv| !fv.category_field.nil? }
   end
 
   # GET /items/new
   def new
     @item = Item.new
+    @category_fields = CategoryField.where(category_id: Category.first).all
   end
 
   # GET /items/1/edit
   def edit
-      @field_values = CategoryFieldValue.where(item_id: @item.id).select{ |fv| !fv.category_field.nil? }
+      # @field_values = CategoryFieldValue.where(item_id: @item.id).all.select{ |fv| !fv.category_field.nil? }
+      @category_fields = CategoryField.where(category_id: @item.category_id).all
   end
 
   # POST /items
@@ -30,6 +47,11 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
+        category_field_values = []
+        params[:item_field].each do |key, value|
+          category_field_values << { item_id: @item.id, category_field_id: key, value: value }
+        end
+        CategoryFieldValue.create(category_field_values)
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
@@ -42,8 +64,22 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+    # abort params[:item_field].inspect
+    # abort params[:id].inspect
+
     respond_to do |format|
       if @item.update(item_params)
+        params[:item_field].each do |key, value|
+          cfv = CategoryFieldValue.where(item_id: params[:id], category_field_id: key).first
+          if cfv.nil?
+            CategoryFieldValue.create(item_id: params[:id], category_field_id: key, value: value)
+          else
+            if cfv.value != value
+              cfv.value = value
+              cfv.save
+            end
+          end
+        end
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else

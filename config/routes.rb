@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :category_fields
   resources :fields
   resources :categories
+  get '/account', to: 'personal_account#index' , as: :account
 
   devise_for :users, controllers: { sessions: 'users/sessions' , registrations: 'users/registrations' }
 

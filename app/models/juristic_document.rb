@@ -1,0 +1,2 @@
+class JuristicDocument < ApplicationRecord
+end

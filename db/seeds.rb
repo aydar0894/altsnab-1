@@ -6,6 +6,27 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+if PaymentInformation.count == 0
+   paym =  PaymentInformation.new(payment_account: '123456789',bank_name: 'Сбербанк',bik: '555555555',bank_correspondent_account: '999999999')
+   jurast =  JuristicDocument.new(
+        company_full_name: 'ООО Рога и Копыта',
+        company_short_name: 'РИК',
+        ceo_name: 'Алексеев Михаил Иванович',
+        legal_address: 'г.Москва, ул.Мира, д.1',
+        postal_address: 'г.Москва, ул.Мира, д.1',
+        inn: '21567358485484',
+        kpp: '325478o6805845845858',
+        ogrn: '34567890',
+        okpo: '78965684773',
+        okato: '2346789709548'
+        )
+    paym.save()
+    jurast.save()
+    User.create(juristic_document_id: paym.id, payment_information_id: jurast.id, first_name: 'Николай',middle_name: 'Викторович',last_name: 'Иванов', email: 'n.ivanov@mail.ru', password: '123321', role: '0')
+
+end
+
 users = User.find_by(role: '1')
 if users.nil?
     User.create(name: 'Administrator', email: 'admin@altsnab.ru', password: 'admin_altsnab', role: '1')

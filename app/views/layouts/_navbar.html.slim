@@ -35,6 +35,10 @@ header uk-sticky=""
                     = link_to 'Создать аккаунт', new_user_registration_path, class: 'uk-width-1-1 uk-button uk-button-summer uk-margin-small-top'
             - else
               li
+                = link_to account_path, method: :get, class: 'dropdown-login'
+                  span uk-icon=("icon: user; ratio: 1") 
+                  | Личныый Кабинет
+              li
                 = link_to destroy_user_session_path, method: :delete, class: 'dropdown-login'
                   span uk-icon=("icon: user; ratio: 1") 
                   | Выйти

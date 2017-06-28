@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627170136) do
+ActiveRecord::Schema.define(version: 20170628123559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,12 +60,29 @@ ActiveRecord::Schema.define(version: 20170627170136) do
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
   end
 
-  add_foreign_key "categories", "categories", column: "parent_category_id"
-  add_foreign_key "category_field_values", "category_fields"
-  add_foreign_key "category_field_values", "items"
-  add_foreign_key "category_fields", "categories"
-  add_foreign_key "category_fields", "fields"
-  add_foreign_key "items", "categories"
+  create_table "juristic_documents", force: :cascade do |t|
+    t.text     "company_full_name"
+    t.text     "company_short_name"
+    t.text     "ceo_name"
+    t.text     "legal_address"
+    t.text     "postal_address"
+    t.text     "inn"
+    t.text     "kpp"
+    t.text     "ogrn"
+    t.text     "okpo"
+    t.text     "okato"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "payment_informations", force: :cascade do |t|
+    t.text     "payment_account"
+    t.text     "bank_name"
+    t.text     "bik"
+    t.text     "bank_correspondent_account"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -80,10 +97,24 @@ ActiveRecord::Schema.define(version: 20170627170136) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.text     "name"
     t.integer  "role"
+    t.text     "middle_name"
+    t.text     "last_name"
+    t.integer  "juristic_document_id"
+    t.integer  "payment_information_id"
+    t.text     "first_name"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["juristic_document_id"], name: "index_users_on_juristic_document_id", using: :btree
+    t.index ["payment_information_id"], name: "index_users_on_payment_information_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "categories", "categories", column: "parent_category_id"
+  add_foreign_key "category_field_values", "category_fields"
+  add_foreign_key "category_field_values", "items"
+  add_foreign_key "category_fields", "categories"
+  add_foreign_key "category_fields", "fields"
+  add_foreign_key "items", "categories"
+  add_foreign_key "users", "juristic_documents"
+  add_foreign_key "users", "payment_informations"
 end

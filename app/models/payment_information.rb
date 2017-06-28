@@ -1,0 +1,2 @@
+class PaymentInformation < ApplicationRecord
+end

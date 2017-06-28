@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  def create    
+  def create
     generated_password = Devise.friendly_token.first(8)
     jur = JuristicDocument.new(' ',' ',' ',' ',' ',' ',' ',' ',' ',' ')
     paym = PaymentInformation.new(' ',' ',' ',' ')
@@ -67,6 +67,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
     def user_params
-      params.require(:users).permit(:name, :email)
+      params.require(:users).permit(:first_name, :last_name, :middle_name, :email)
     end
 end

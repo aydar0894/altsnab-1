@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     @items = Item.all.order(:id)
   end
 
-  # GET /catalog/(:category_id)
+  # GET /catalog(/:category_id)
   def catalog
     if params[:category_id]
       category = Category.find(params[:category_id])

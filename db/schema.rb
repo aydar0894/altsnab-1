@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628143757) do
+ActiveRecord::Schema.define(version: 20170628145834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20170628143757) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.text     "role",                   default: "1"
+    t.text     "role",                   default: "0"
     t.text     "middle_name"
     t.text     "last_name"
     t.integer  "juristic_document_id"

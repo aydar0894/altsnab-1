@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627170136) do
+ActiveRecord::Schema.define(version: 20170628123149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,21 +51,18 @@ ActiveRecord::Schema.define(version: 20170627170136) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string   "name",                    null: false
+    t.string   "name",                           null: false
     t.text     "description"
     t.integer  "category_id"
-    t.integer  "price",       default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "price",              default: 0
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
   end
-
-  add_foreign_key "categories", "categories", column: "parent_category_id"
-  add_foreign_key "category_field_values", "category_fields"
-  add_foreign_key "category_field_values", "items"
-  add_foreign_key "category_fields", "categories"
-  add_foreign_key "category_fields", "fields"
-  add_foreign_key "items", "categories"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -86,4 +83,10 @@ ActiveRecord::Schema.define(version: 20170627170136) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "categories", "categories", column: "parent_category_id"
+  add_foreign_key "category_field_values", "category_fields"
+  add_foreign_key "category_field_values", "items"
+  add_foreign_key "category_fields", "categories"
+  add_foreign_key "category_fields", "fields"
+  add_foreign_key "items", "categories"
 end

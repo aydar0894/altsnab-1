@@ -4,10 +4,11 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.all.order(:id)
   end
 
   def catalog
+    @items = Item.all.order(:id)
     @child_categories = {}
     @all_categories = Category.all
     @head_categories = @all_categories.select { |cat| cat.parent_category_id.nil? }
@@ -107,6 +108,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :description, :category_id, :price)
+      params.require(:item).permit(:name, :description, :category_id, :price, :image)
     end
 end

@@ -1,4 +1,4 @@
-= form_for(item) do |f|
+= form_for(item, html: { multipart: true }) do |f|
   - if item.errors.any?
     #error_explanation
       h2
@@ -20,6 +20,18 @@
   .field
     = f.label :price
     = f.number_field :price
+  .field
+    = f.label :image
+    - if item.image.present?
+      = image_tag item.image.url(:medium), height:'200', width: '280', alt: ''
+      br
+      |  (Текущая картинка)
+    - else
+      br
+      |  Картинка не установлена, будет использована стандартная
+      br
+    = f.file_field :image
+  
   p
     input#item-id-input [type="hidden" value="#{item.id ? item.id : 0}"]
     strong

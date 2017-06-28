@@ -37,6 +37,7 @@ gem 'bcrypt', platforms: :ruby
 # gem 'bcrypt', '~> 3.1.7'
 
 gem "cocoon"
+gem "paperclip", "~> 5.0.0"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "items#catalog"
 
-  get '/item_category_fields/:item_id/:category_id' => 'category_fields#item_category_fields', as: :item_category_fields
+  get '/item_category_fields/:item_id/:category_id', to: 'category_fields#item_category_fields', as: :item_category_fields
+  get '/catalog(/:category_id)', to: 'items#catalog', as: :catalog_category
 end

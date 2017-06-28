@@ -28,9 +28,7 @@
     #fields
       - @category_fields&.each do |category_field|
         - @cfv = category_field.get_item_field(item.id)
-        = "#{category_field.field.name}"
-        / = "#{category_field.get_item_field(item.id).value}"
-        input [name="item_field[#{category_field.id}]" value="#{@cfv.value}"]
+        input [name="item_field[#{category_field.id}]" value="#{@cfv&.value}"]
         br
   .actions
     = f.submit

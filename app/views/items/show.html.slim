@@ -20,8 +20,8 @@ p
   strong
     | Fields:
   br
-  - @field_values.each do |field_value|
-    = "#{field_value.field.name}: #{field_value.value}"
+  - @field_values&.each do |field_value|
+    = "#{field_value.field&.name}: #{field_value.value}"
     br
 = link_to 'Edit', edit_item_path(@item)
 |  | 

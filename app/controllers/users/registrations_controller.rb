@@ -10,9 +10,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     generated_password = Devise.friendly_token.first(8)
-    user = User.create!(:role => 0, :first_name => params[:user][:first_name], :email => params[:user][:email], :password => generated_password)
-    puts generated_password
-    UserMailer.mailer(user, generated_password).deliver_now
+    jur = JuristicDocument.new(' ',' ',' ',' ',' ',' ',' ',' ',' ',' ')
+    paym = PaymentInformation.new(' ',' ',' ',' ')
+    jur.save()
+    paym.save()
+    user = User.create!(:juristic_document_id=>jur.id, :payment_information_id => paym.id, :role => 0, :name => params[:user][:name], :email => params[:user][:email], :password => generated_password)
+    # puts generated_password
+    # UserMailer.mailer(user, generated_password).deliver_now    
   end
 
   # GET /resource/edit

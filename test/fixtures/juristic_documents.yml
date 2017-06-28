@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_full_name: MyText
+  company_short_name: MyText
+  ceo_name: MyText
+  legal_address: MyText
+  postal_address: MyText
+  inn: MyText
+  kpp: MyText
+  ogrn: MyText
+  okpo: MyText
+  okato: MyText
+
+two:
+  company_full_name: MyText
+  company_short_name: MyText
+  ceo_name: MyText
+  legal_address: MyText
+  postal_address: MyText
+  inn: MyText
+  kpp: MyText
+  ogrn: MyText
+  okpo: MyText
+  okato: MyText

@@ -1,3 +1,4 @@
+- @head_categories = Category.all.select { |cat| cat.parent_category_id.nil? }
 header uk-sticky="" 
   .tm-smallmenu
     .uk-container.uk-container-center
@@ -52,19 +53,12 @@ header uk-sticky=""
             li.uk-active
               a.root-item-selected href="/"  Главная
             li
-              a href="category.html"  Каталог
+              a href="/"  Каталог
               .uk-navbar-dropdown
                 ul.uk-nav.uk-navbar-dropdown-nav
-                  li
-                    a href="#"  Спецтехника для нефти и газа
-                  li
-                    a href="#"  Тягачи, прицепы и автопоезда
-                  li
-                    a href="#"  Строительная техника
-                  li
-                    a href="#"  Специальная техника
-                  li
-                    a href="#"  Комплектация и переоборудование
+                  - @head_categories.each do |cat|
+                    li
+                      a href="#" = cat.name
             li
               a href="/content/howto/"  Доставка и оплата
             li

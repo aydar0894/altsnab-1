@@ -7,8 +7,19 @@ class ItemsController < ApplicationController
     @items = Item.all.order(:id)
   end
 
+  # GET /catalog/(:category_id)
   def catalog
-    @items = Item.all.order(:id)
+    if params[:category_id]
+      category = Category.find(params[:category_id])
+      if category
+        @side_opened_category_id = category.parent_category_id
+        @current_category_id = category.id
+        @items = Item.where(category_id: @current_category_id)
+      end
+    end
+
+    @items ||= Item.all.order(:id) # If no category
+
     @child_categories = {}
     @all_categories = Category.all
     @head_categories = @all_categories.select { |cat| cat.parent_category_id.nil? }

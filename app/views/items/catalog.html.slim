@@ -3,22 +3,22 @@
     h3 Каталог продукции
     ul.tm-list-category.uk-margin-remove uk-accordion=("multiple: true") 
       - @head_categories.each_with_index do |cat, index|
-        - if index > 0
-          li
-            h4.uk-accordion-title = cat.name
-            .uk-accordion-content.uk-margin-remove
-              ul
-                - @child_categories[cat.id].each do |subcat| 
-                  li
-                    a href="#" = subcat.name
-        - else
+        - if cat.id == @side_opened_category_id || (@side_opened_category_id.nil? && index == 0)
           li.uk-open
             h4.uk-accordion-title = cat.name
             .uk-accordion-content.uk-margin-remove
               ul
                 - @child_categories[cat.id].each do |subcat| 
                   li
-                    a href="#" = subcat.name
+                    = link_to subcat.name, catalog_category_path(subcat.id)
+        - else
+          li
+            h4.uk-accordion-title = cat.name
+            .uk-accordion-content.uk-margin-remove
+              ul
+                - @child_categories[cat.id].each do |subcat| 
+                  li
+                    = link_to subcat.name, catalog_category_path(subcat.id)
       / li.uk-open
       /   h4.uk-accordion-title Спецтехника для нефти и газа
       /   .uk-accordion-content.uk-margin-remove

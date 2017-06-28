@@ -8,11 +8,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  def create    
+  def create
     generated_password = Devise.friendly_token.first(8)
-    user = User.create!(:role => 0, :name => params[:user][:name], :email => params[:user][:email], :password => generated_password)
+    user = User.create!(:role => 0, :first_name => params[:user][:first_name], :email => params[:user][:email], :password => generated_password)
     puts generated_password
-    UserMailer.mailer(user, generated_password).deliver_now    
+    UserMailer.mailer(user, generated_password).deliver_now
   end
 
   # GET /resource/edit
@@ -63,6 +63,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
     def user_params
-      params.require(:users).permit(:name, :email)
+      params.require(:users).permit(:first_name, :last_name, :middle_name, :email)
     end
 end

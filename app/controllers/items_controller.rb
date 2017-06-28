@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-      @field_values = CategoryFieldValue.where(item_id: @item.id).select{ |fv| !fv.category_field.nil? }
+      @field_values = CategoryFieldValue.joins(:category_field).where(item_id: @item.id, category_fields: { category_id: @item.category_id }).all.select{ |fv| !fv.category_field.nil? }
   end
 
   # GET /items/new
@@ -20,7 +20,8 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-      @field_values = CategoryFieldValue.where(item_id: @item.id).select{ |fv| !fv.category_field.nil? }
+      # @field_values = CategoryFieldValue.where(item_id: @item.id).all.select{ |fv| !fv.category_field.nil? }
+      @category_fields = CategoryField.where(category_id: @item.category_id).all
   end
 
   # POST /items
@@ -42,8 +43,22 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+    # abort params[:item_field].inspect
+    # abort params[:id].inspect
+
     respond_to do |format|
       if @item.update(item_params)
+        params[:item_field].each do |key, value|
+          cfv = CategoryFieldValue.where(item_id: params[:id], category_field_id: key).first
+          if cfv.nil?
+            CategoryFieldValue.create(item_id: params[:id], category_field_id: key, value: value)
+          else
+            if cfv.value != value
+              cfv.value = value
+              cfv.save
+            end
+          end
+        end
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else

@@ -12,6 +12,43 @@ class CategoryFieldsController < ApplicationController
   def show
   end
 
+  # GET /category_fields_to_category/1.json
+  def to_category
+    @category_id = params[:category_id]
+
+    categoy_fields = CategoryField.where(category_id: @category_id)
+
+    respond_to do |format|
+      format.html {  }
+      format.json { render json: categoy_fields }
+    end
+  end
+
+  # GET /category_fields_item/1.json
+  def to_item
+    @category_id = params[:category_id]
+    @item_id = params[:item_id]
+
+    category_fields = CategoryField.where(category_id: @category_id).all
+
+    category_field_values = []
+    category_fields.each_with_index do |cf, index|
+      category_field_value = cf.category_field_values.where(item_id: @item_id).first
+      @value = category_field_value&.value ? category_field_value.value : ''
+      category_field_values << {
+        value: @value,
+        name: cf.field.name,
+        id: cf.field.id,
+        cf_id: cf.id
+      }
+    end
+
+    respond_to do |format|
+      format.html {  }
+      format.json { render json: category_field_values }
+    end
+  end
+
   # GET /category_fields/new
   def new
     @category_field = CategoryField.new

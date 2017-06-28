@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @category_fields = CategoryField.where(category_id: Category.first).all
   end
 
   # GET /items/1/edit
@@ -31,6 +32,11 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
+        category_field_values = []
+        params[:item_field].each do |key, value|
+          category_field_values << { item_id: @item.id, category_field_id: key, value: value }
+        end
+        CategoryFieldValue.create(category_field_values)
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else

@@ -12,20 +12,8 @@ class CategoryFieldsController < ApplicationController
   def show
   end
 
-  # GET /category_fields_to_category/1.json
-  def to_category
-    @category_id = params[:category_id]
-
-    categoy_fields = CategoryField.where(category_id: @category_id)
-
-    respond_to do |format|
-      format.html {  }
-      format.json { render json: categoy_fields }
-    end
-  end
-
-  # GET /category_fields_item/1.json
-  def to_item
+  # GET /item_category_fields/1.json
+  def item_category_fields
     @category_id = params[:category_id]
     @item_id = params[:item_id]
 

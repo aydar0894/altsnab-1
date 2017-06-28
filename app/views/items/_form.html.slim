@@ -16,7 +16,7 @@
     = f.text_area :description
   .field
     = f.label :category_id
-    = f.select(:category_id, Category.all.map{ |t| [t.name, t.id] }, {}, class: "form-control")
+    = f.select(:category_id, Category.all.select{ |t| t.is_leaf }.map{ |t| [t.name, t.id] }, {}, class: "form-control")
   .field
     = f.label :price
     = f.number_field :price

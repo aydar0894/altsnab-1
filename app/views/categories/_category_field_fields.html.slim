@@ -1,6 +1,6 @@
 .nested-fields
   .form-group
-    = @field.name
+    = @field&.name
     br
     .input-group
       = f.select(:field_id, Field.all.map{ |t| [t.name, t.id] }, {}, class: "form-control")

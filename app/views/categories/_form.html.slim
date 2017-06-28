@@ -20,12 +20,9 @@
   #field
     = f.label :category_fields, "Поля", class: "control-label"
     div
-      - counter = 1
       = f.fields_for :category_fields do |category_field|
-        = counter
         - @field = category_field.object.field
         = render 'category_field_fields', f: category_field
-        - counter = counter + 1
       .links
         = link_to_add_association "Добавить поле".html_safe, f, :category_fields
   .actions

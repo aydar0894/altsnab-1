@@ -1,28 +1,24 @@
-p#notice
-  = notice
-p
-  strong
-    | Name:
-  = @item.name
-p
-  strong
-    | Description:
-  = @item.description
-p
-  strong
-    | Category:
-  = @item.category.name
-p
-  strong
-    | Price:
-  = @item.price
-p
-  strong
-    | Fields:
-  br
-  - @field_values.each do |field_value|
-    = "#{field_value.field.name}: #{field_value.value}"
-    br
-= link_to 'Edit', edit_item_path(@item)
-|  | 
-= link_to 'Back', items_path
+.main.uk-container-small
+  .uk-grid
+    .uk-width-1-2
+      = image_tag @item.image.url(:high), width: '100%', alt: ''
+    .uk-width-1-2
+      h2 = @item.name
+      .uk-text-small
+        = @item.category.name
+      .item-description
+        = @item.description
+      .item-price
+        | от
+        =<> @item.price
+        | руб.
+      br
+      .fields
+        strong
+          | Характеристики:
+        br
+        - @field_values&.each do |field_value|
+          = "#{field_value.field&.name}: #{field_value.value}"
+          br
+      - if current_user&.is_admin?
+        = link_to 'Edit', edit_item_path(@item)

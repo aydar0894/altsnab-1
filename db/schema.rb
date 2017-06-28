@@ -51,12 +51,16 @@ ActiveRecord::Schema.define(version: 20170628123559) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string   "name",                    null: false
+    t.string   "name",                           null: false
     t.text     "description"
     t.integer  "category_id"
-    t.integer  "price",       default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "price",              default: 0
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
   end
 

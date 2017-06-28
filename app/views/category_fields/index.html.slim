@@ -1,27 +1,27 @@
-p#notice
-  = notice
+/ p#notice
+/   = notice
 h1
-  | Category Fields
-table
+  | Характеристики категорий
+table.uk-table.uk-table-striped
   thead
     tr
       th
-        | Category
+        | Категория
       th
-        | Field
+        | Характеристика
       th[colspan="3"]
   tbody
-    - @category_fields.each do |category_field|
+    - @category_fields&.each do |category_field|
       tr
         td
-          = category_field.category
+          = category_field.category&.name
         td
-          = category_field.field
+          = category_field.field&.name
+        / td
+        /   = link_to 'Показать', category_field
         td
-          = link_to 'Show', category_field
-        td
-          = link_to 'Edit', edit_category_field_path(category_field)
-        td
-          = link_to 'Destroy', category_field, method: :delete, data: { confirm: 'Are you sure?' }
+          => link_to 'Изменить', edit_category_field_path(category_field)
+          | /
+          =< link_to 'Удалить', category_field, method: :delete, data: { confirm: 'Вы уверены, что хотите удалить характеристику категории?' }
 br
-= link_to 'New Category Field', new_category_field_path
+= link_to 'Создать привязку категория-характеристика', new_category_field_path

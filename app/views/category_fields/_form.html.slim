@@ -10,9 +10,9 @@
             = message
   .field
     = f.label :category_id
-    = f.text_field :category_id
+    = f.select(:category_id, Category.all.select{ |t| t.is_leaf }.map{ |t| [t.name, t.id] }, {}, class: "form-control")
   .field
     = f.label :field_id
-    = f.text_field :field_id
+    = f.select(:field_id, Field.all.map{ |t| [t.name, t.id] }, {}, class: "form-control")
   .actions
     = f.submit

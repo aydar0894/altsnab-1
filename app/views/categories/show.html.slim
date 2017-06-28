@@ -12,6 +12,12 @@ p
   strong
     | Is leaf:
   = @category.is_leaf
+  
+p
+  strong
+    | Поля:
+  - @category_fields&.each do |category_field|
+    = category_field&.field&.name
 = link_to 'Edit', edit_category_path(@category)
 |  | 
 = link_to 'Back', categories_path

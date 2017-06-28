@@ -4,10 +4,22 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.all.order(:id)
   end
 
+  # GET /catalog/(:category_id)
   def catalog
+    if params[:category_id]
+      category = Category.find(params[:category_id])
+      if category
+        @side_opened_category_id = category.parent_category_id
+        @current_category_id = category.id
+        @items = Item.where(category_id: @current_category_id)
+      end
+    end
+
+    @items ||= Item.all.order(:id) # If no category
+
     @child_categories = {}
     @all_categories = Category.all
     @head_categories = @all_categories.select { |cat| cat.parent_category_id.nil? }
@@ -107,6 +119,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :description, :category_id, :price)
+      params.require(:item).permit(:name, :description, :category_id, :price, :image)
     end
 end

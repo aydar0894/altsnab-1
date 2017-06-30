@@ -10,7 +10,11 @@
         fieldset.uk-fieldset
           legend.uk-legend Быстрая регистрация
           .uk-margin
-            = f.text_field :first_name, class: 'uk-input', required: true, placeholder: 'Ваше имя'
+            = f.text_field :first_name, class: 'uk-input', required: true, placeholder: 'Имя'
+          .uk-margin
+            = f.text_field :last_name, class: 'uk-input', required: true, placeholder: 'Фамилия'
+          .uk-margin
+            = f.text_field :middle_name, class: 'uk-input', required: true, placeholder: 'Отчество'
           .uk-margin
             = f.email_field :email, class: 'uk-input', required: true, placeholder: 'E-mail'
           .uk-margin
@@ -23,86 +27,77 @@
           .uk-margin-medium-top
             button.uk-button.uk-button-summer.uk-form-width-medium type="submit"  Зарегистрироваться
             a.uk-button.uk-button-emerald.uk-margin-left uk-switcher-item="next"  Расширенная регистрация
-      form.tm-form-registration
+
+      = form_for(:user, :url => registration_path(:user), html: {class: 'tm-form-registration'}) do |f|
         fieldset.uk-fieldset
           legend.uk-legend Расширенная регистрация
           .uk-margin
-            input.uk-input.required placeholder=("* Логин") type="text" /
+            = f.email_field :email, class: 'uk-input', required: true, placeholder: 'E-mail'
           .uk-margin.uk-grid-small.uk-child-width-1-2 uk-grid="" 
             div
               .uk-inline.uk-width-1-1
                 span.uk-form-icon.near-password uk-icon=("icon: lock") 
-                input.uk-input.required placeholder=("* Пароль") type="password" /
+                .uk-margin
+                  = f.text_field :password, class: 'uk-input', required: true, placeholder: 'Пароль'
             div
               .uk-inline.uk-width-1-1
                 span.uk-form-icon.near-password uk-icon=("icon: lock") 
-                input.uk-input.required placeholder=("* Подтвердите пароль") type="password" /
+                .uk-margin
+                   = f.text_field :password_confirmation, class: 'uk-input', required: true, placeholder: 'Подтверждение пароля' 
+         
           .uk-margin
-            input.uk-input.required placeholder=("* Электронный адрес") type="text" /
+            = f.text_field :first_name, class: 'uk-input', required: true, placeholder: 'Имя'
           .uk-margin
-            input.uk-input.required placeholder=("* Имя") type="text" /
+            = f.text_field :last_name, class: 'uk-input', required: true, placeholder: 'Фамилия'
           .uk-margin
-            input.uk-input placeholder="Фамилия" type="text" /
+            = f.text_field :middle_name, class: 'uk-input', required: true, placeholder: 'Отчество'
           .uk-margin
-            input.uk-input placeholder="Отчество" type="text" /
-          .uk-margin
-            input.uk-input.required placeholder=("* Контактный телефон") type="text" /
+            = f.text_field :phone_number, class: 'uk-input', required: true, placeholder: 'Контактный телефон'
+          
           .uk-margin.uk-text-left.click-me.label
             label
               input.uk-checkbox type="checkbox" /
               | Заполнить юридические сведения
-              span.uk-text-small.uk-display-block Не обязательно
-            .extra
-              .uk-margin
-                label Полное наименование организации
-                input.uk-input placeholder=("Пример: Общество с ограниченной ответственностью 'Луч'") type="text" /
-              .uk-margin
-                label Краткое наименование организации
-                input.uk-input placeholder=("Пример: ООО 'Луч'") type="text" /
-              .uk-margin
-                label Генеральный директор
-                input.uk-input placeholder=("Иванов Иван Иванович") type="text" /
-              .uk-margin
-                label Юридический адрес
-                input.uk-input placeholder=("123456 РФ, Пермская область, г. Пермь, ул. Пушкина, дом Колотушкина") type="text" /
-              .uk-margin
-                label Почтовый адрес
-                input.uk-input placeholder=("123456 РФ, Пермская область, г. Пермь, ул. Пушкина, дом Колотушкина") type="text" /
-              .uk-margin
-                label ИНН
-                input.uk-input placeholder="12700111" type="text" /
-              .uk-margin
-                label КПП
-                input.uk-input placeholder="987450311" type="text" /
-              .uk-margin
-                label ОГРН
-                input.uk-input placeholder="34535375765433" type="text" /
-              .uk-margin
-                label ОКПО
-                input.uk-input placeholder="02428896" type="text" /
-              .uk-margin
-                label ОКАТО
-                input.uk-input placeholder="61401000000" type="text" /
-          .uk-margin.uk-text-left.click-me.label
+              span.uk-text-small.uk-display-block Не обязательно              
+              .extra.uk-display-block
+                =f.fields_for :juristic_document do |jur_field|
+                  .uk-margin
+                    = jur_field.text_field :company_full_name, class: 'uk-input', required: true, placeholder: 'Полное наименование организации'
+                  .uk-margin
+                    = jur_field.text_field :company_short_name, class: 'uk-input', required: true, placeholder: 'Краткое наименование организации'
+                  .uk-margin
+                    = jur_field.text_field :ceo_name, class: 'uk-input', required: true, placeholder: 'Генеральный директор'
+                  .uk-margin
+                    = jur_field.text_field :legal_address, class: 'uk-input', required: true, placeholder: 'Юридический адрес'
+                  .uk-margin
+                    = jur_field.text_field :postal_address, class: 'uk-input', required: true, placeholder: 'Почтовый адрес'
+                  .uk-margin
+                    = jur_field.text_field :inn, class: 'uk-input', required: true, placeholder: 'ИНН'
+                  .uk-margin
+                    = jur_field.text_field :kpp, class: 'uk-input', required: true, placeholder: 'КПП'
+                  .uk-margin
+                    = jur_field.text_field :ogrn, class: 'uk-input', required: true, placeholder: 'ОГРН'
+                  .uk-margin
+                     = jur_field.text_field :okpo, class: 'uk-input', required: true, placeholder: 'ОКПО'
+                  .uk-margin
+                    = jur_field.text_field :okato, class: 'uk-input', required: true, placeholder: 'ОКАТО'
+          uk-margin.uk-text-left.click-me.label
             label
-              input.uk-checkbox name="pay-info" type="checkbox" /
+              input.uk-checkbox type="checkbox" /
               | Заполнить платежные данные компании
               span.uk-text-small.uk-display-block Не обязательно
-            .extra
-              .uk-margin
-                label Расчетный счет
-                input.uk-input placeholder="40552650206000095236" type="text" /
-              .uk-margin
-                label Полное наименование банка
-                input.uk-input placeholder=("Пример: АО 'Россельхозбанк' , г. Москва") type="text" /
-              .uk-margin
-                label БИК
-                input.uk-input placeholder=("Пример: 054536968") type="text" /
-              .uk-margin
-                label Корреспондентский счет банка
-                input.uk-input placeholder=("Пример: 45901810600006900754") type="text" /
+              .extra.uk-display-block
+                =f.fields_for :payment_information do |paym_field|
+                  .uk-margin
+                    = paym_field.text_field :payment_account, class: 'uk-input', required: true, placeholder: 'Расчетный счет'
+                  .uk-margin
+                    = paym_field.text_field :bank_name, class: 'uk-input', required: true, placeholder: 'Полное наименование банка'
+                  .uk-margin
+                    = paym_field.text_field :bik, class: 'uk-input', required: true, placeholder: 'БИК'
+                  .uk-margin
+                     = paym_field.text_field :bank_correspondent_account, class: 'uk-input', required: true, placeholder: 'Корреспондентский счет банка'
           .uk-margin
-            img src="#{ image_url 'captcha.jpg'}" /
+            img src="#{image_url 'captcha.jpg'}" /
           .uk-margin.uk-grid-small.uk-child-width-auto.uk-text-left uk-grid="" 
             label
               input.uk-checkbox type="checkbox" /
@@ -111,3 +106,93 @@
           .uk-margin-medium-top
             button.uk-button.uk-button-summer.uk-form-width-medium type="submit"  Зарегистрироваться
             a.uk-button.uk-button-emerald.uk-margin-left uk-switcher-item="next"  Быстрая регистрация
+
+            ///--------------------------------------------------------------
+      / form.tm-form-registration
+      /   fieldset.uk-fieldset
+      /     legend.uk-legend Расширенная регистрация
+      /     .uk-margin
+      /       input.uk-input.required placeholder=("* Логин") type="text" /
+      /     .uk-margin.uk-grid-small.uk-child-width-1-2 uk-grid="" 
+      /       div
+      /         .uk-inline.uk-width-1-1
+      /           span.uk-form-icon.near-password uk-icon=("icon: lock") 
+      /           input.uk-input.required placeholder=("* Пароль") type="password" /
+      /       div
+      /         .uk-inline.uk-width-1-1
+      /           span.uk-form-icon.near-password uk-icon=("icon: lock") 
+      /           input.uk-input.required placeholder=("* Подтвердите пароль") type="password" /
+      /     .uk-margin
+      /       input.uk-input.required placeholder=("* Электронный адрес") type="text" /
+      /     .uk-margin
+      /       input.uk-input.required placeholder=("* Имя") type="text" /
+      /     .uk-margin
+      /       input.uk-input placeholder="Фамилия" type="text" /
+      /     .uk-margin
+      /       input.uk-input placeholder="Отчество" type="text" /
+      /     .uk-margin
+      /       input.uk-input.required placeholder=("* Контактный телефон") type="text" /
+      /     .uk-margin.uk-text-left.click-me.label
+      /       label
+      /         input.uk-checkbox type="checkbox" /
+      /         | Заполнить юридические сведения
+      /         span.uk-text-small.uk-display-block Не обязательно
+      /       .extra
+      /         .uk-margin
+      /           label Полное наименование организации
+      /           input.uk-input placeholder=("Пример: Общество с ограниченной ответственностью 'Луч'") type="text" /
+      /         .uk-margin
+      /           label Краткое наименование организации
+      /           input.uk-input placeholder=("Пример: ООО 'Луч'") type="text" /
+      /         .uk-margin
+      /           label Генеральный директор
+      /           input.uk-input placeholder=("Иванов Иван Иванович") type="text" /
+      /         .uk-margin
+      /           label Юридический адрес
+      /           input.uk-input placeholder=("123456 РФ, Пермская область, г. Пермь, ул. Пушкина, дом Колотушкина") type="text" /
+      /         .uk-margin
+      /           label Почтовый адрес
+      /           input.uk-input placeholder=("123456 РФ, Пермская область, г. Пермь, ул. Пушкина, дом Колотушкина") type="text" /
+      /         .uk-margin
+      /           label ИНН
+      /           input.uk-input placeholder="12700111" type="text" /
+      /         .uk-margin
+      /           label КПП
+      /           input.uk-input placeholder="987450311" type="text" /
+      /         .uk-margin
+      /           label ОГРН
+      /           input.uk-input placeholder="34535375765433" type="text" /
+      /         .uk-margin
+      /           label ОКПО
+      /           input.uk-input placeholder="02428896" type="text" /
+      /         .uk-margin
+      /           label ОКАТО
+      /           input.uk-input placeholder="61401000000" type="text" /
+      /     .uk-margin.uk-text-left.click-me.label
+      /       label
+      /         input.uk-checkbox name="pay-info" type="checkbox" /
+      /         | Заполнить платежные данные компании
+      /         span.uk-text-small.uk-display-block Не обязательно
+      /       .extra
+      /         .uk-margin
+      /           label Расчетный счет
+      /           input.uk-input placeholder="40552650206000095236" type="text" /
+      /         .uk-margin
+      /           label Полное наименование банка
+      /           input.uk-input placeholder=("Пример: АО 'Россельхозбанк' , г. Москва") type="text" /
+      /         .uk-margin
+      /           label БИК
+      /           input.uk-input placeholder=("Пример: 054536968") type="text" /
+      /         .uk-margin
+      /           label Корреспондентский счет банка
+      /           input.uk-input placeholder=("Пример: 45901810600006900754") type="text" /
+      /     .uk-margin
+      /       img src="#{ image_url 'captcha.jpg'}" /
+      /     .uk-margin.uk-grid-small.uk-child-width-auto.uk-text-left uk-grid="" 
+      /       label
+      /         input.uk-checkbox type="checkbox" /
+      /         | Согласен с условиями
+      /         a href="#"  Лицензионного соглашения
+      /     .uk-margin-medium-top
+      /       button.uk-button.uk-button-summer.uk-form-width-medium type="submit"  Зарегистрироваться
+      /       a.uk-button.uk-button-emerald.uk-margin-left uk-switcher-item="next"  Быстрая регистрация

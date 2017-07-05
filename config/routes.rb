@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :fields
   resources :categories
   get '/account', to: 'personal_account#index' , as: :account
+  get '/administration', to: 'administrator_panel#index' , as: :administration
 
   devise_for :users, controllers: { sessions: 'users/sessions' , registrations: 'users/registrations' }
 

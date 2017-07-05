@@ -4,92 +4,86 @@
 /   br
 /   =@user.first_name
 .uk-text-left 
-    h3 Личные данные    
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text Имя:         
-        span.text =@user.first_name 
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text Фамилия:
-        span.text =@user.last_name
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text Отчество:
-        span.text =@user.middle_name
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text email:
-        span.text =@user.email  
+  h3 Личные данные    
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text Имя:         
+      span.text =@user.first_name 
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text Фамилия:
+      span.text =@user.last_name
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text Отчество:
+      span.text =@user.middle_name
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text email:
+      span.text =@user.email  
 
 .uk-text-left 
-    h3 Платежные данные    
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text Расчетный счет:         
-        span.text =@paymnt_data&.payment_account 
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text Полное наименование банка:
-        span.text =@paymnt_data&.bank_name
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text БИК:
-        span.text =@paymnt_data&.bik
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text Корреспондентский счет банка:
-        span.text =@paymnt_data&.bank_correspondent_account    
+  h3 Платежные данные    
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text Расчетный счет:         
+      span.text =@paymnt_data&.payment_account 
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text Полное наименование банка:
+      span.text =@paymnt_data&.bank_name
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text БИК:
+      span.text =@paymnt_data&.bik
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text Корреспондентский счет банка:
+      span.text =@paymnt_data&.bank_correspondent_account    
 
 .uk-text-left 
-    h3 Юридическая информация    
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text Полное наименование организации:         
-        span.text =@juristic_data&.company_full_name 
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text Краткое наименование организации:
-        span.text =@juristic_data&.company_short_name
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text Генеральный директор:
-        span.text =@juristic_data&.ceo_name
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text Юридический адрес:
-        span.text =@juristic_data&.legal_address        
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text Почтовый адрес:
-        span.text =@juristic_data.postal_address        
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text ИНН:
-        span.text =@juristic_data&.inn        
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text КПП:
-        span.text =@juristic_data&.kpp
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text ОГРН:
-        span.text =@juristic_data&.ogrn
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text ОКПО:
-        span.text =@juristic_data&.okpo
-    .uk-width-1-1.uk-inline.uk-margin-small-bottom      
-        span.uk-label
-          span.text ОКАТО:
-        span.text =@juristic_data&.okato
+  h3 Юридическая информация    
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text Полное наименование организации:         
+      span.text =@juristic_data&.company_full_name 
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text Краткое наименование организации:
+      span.text =@juristic_data&.company_short_name
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text Генеральный директор:
+      span.text =@juristic_data&.ceo_name
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text Юридический адрес:
+      span.text =@juristic_data&.legal_address        
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text Почтовый адрес:
+      span.text =@juristic_data.postal_address        
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text ИНН:
+      span.text =@juristic_data&.inn        
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text КПП:
+      span.text =@juristic_data&.kpp
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text ОГРН:
+      span.text =@juristic_data&.ogrn
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text ОКПО:
+      span.text =@juristic_data&.okpo
+  .uk-width-1-1.uk-inline.uk-margin-small-bottom      
+      span.uk-label
+        span.text ОКАТО:
+      span.text =@juristic_data&.okato
+
+  =< link_to 'Изменить данные', edit_user_registration_path, class: 'uk-button uk-button-emerald uk-margin-top'
 
 
-    / button.uk-button.uk-button-emerald.uk-margin-top Войти
-    / =< link_to 'Создать аккаунт', new_user_registration_path, class: 'uk-button uk-button-emerald uk-margin-top'
-    / p
-    /   | У вас нет аккаунта,
-    /   =< link_to 'создать его', new_user_registration_path, id: 'customer_register_link'
-    /   br/
-    /   | или
-    /   a href="/" title=("Вернуться в магазин")  Вернуться в магазин

@@ -14,11 +14,7 @@ header uk-sticky=""
               a href="#" 
                 span uk-icon=("icon: question; ratio: 1") 
                 | Справка
-            - if !current_user
-              li
-                = link_to categories_path, method: :get, class: 'dropdown-login'
-                  span uk-icon=("icon: user; ratio: 1") 
-                  | Управление категориями
+            - if !current_user              
               li
                 = link_to new_user_session_path, class: 'dropdown-login'
                   span uk-icon=("icon: user; ratio: 1") 
@@ -42,10 +38,7 @@ header uk-sticky=""
                 = link_to account_path, method: :get, class: 'dropdown-login'
                   span uk-icon=("icon: user; ratio: 1") 
                   | Личный Кабинет
-              li
-                = link_to categories_path, method: :get, class: 'dropdown-login'
-                  span uk-icon=("icon: user; ratio: 1") 
-                  | Управление категориями
+            
               li
                 = link_to destroy_user_session_path, method: :delete, class: 'dropdown-login'
                   span uk-icon=("icon: user; ratio: 1") 

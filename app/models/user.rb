@@ -9,4 +9,5 @@ class User < ApplicationRecord
   end
   has_one :payment_information
   has_one :juristic_document
+  has_many :shipment_informations
 end

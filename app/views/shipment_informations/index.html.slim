@@ -1,0 +1,39 @@
+p#notice
+  = notice
+h1
+  | Shipment Informations
+table
+  thead
+    tr
+      th
+        | Country
+      th
+        | City
+      th
+        | Address
+      th
+        | Zip code
+      th
+        | Is main
+      th[colspan="3"]
+  tbody
+    - @shipment_informations.each do |shipment_information|
+      tr
+        td
+          = shipment_information.country
+        td
+          = shipment_information.city
+        td
+          = shipment_information.address
+        td
+          = shipment_information.zip_code
+        td
+          = shipment_information.is_main
+        td
+          = link_to 'Show', shipment_information
+        td
+          = link_to 'Edit', edit_shipment_information_path(shipment_information)
+        td
+          = link_to 'Destroy', shipment_information, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Shipment Information', new_shipment_information_path

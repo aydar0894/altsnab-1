@@ -1,0 +1,27 @@
+= form_for(shipment_information) do |f|
+  - if shipment_information.errors.any?
+    #error_explanation
+      h2
+        = pluralize(shipment_information.errors.count, "error")
+        |  prohibited this shipment_information from being saved:
+      ul
+        - shipment_information.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = f.label :country
+    = f.text_area :country
+  .field
+    = f.label :city
+    = f.text_area :city
+  .field
+    = f.label :address
+    = f.text_area :address
+  .field
+    = f.label :zip_code
+    = f.text_area :zip_code
+  .field
+    = f.label :is_main
+    = f.check_box :is_main
+  .actions
+    = f.submit

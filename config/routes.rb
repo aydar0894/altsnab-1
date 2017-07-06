@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shipment_informations
   resources :category_field_values
   resources :items
   resources :category_fields

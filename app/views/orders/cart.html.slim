@@ -4,7 +4,7 @@ ul
     - cart_item_info = @cart_items_info[index]
     - price_total = cart_item.price * cart_item_info['count']
     - items_price_total += price_total
-    li
+    li.cart_item [data-item-id="#{cart_item.id}" data-price="#{cart_item.price}" data-count="#{cart_item_info['count']}"]
       = link_to item_path(cart_item), class: 'cart_item'  
         .image
           = image_tag cart_item.image.url(:thumb), height:'100', width: '140', alt: ''
@@ -19,13 +19,22 @@ ul
       .count
         strong
           | Кол-во:
-        = cart_item_info["count"].to_s + ' шт.'
+        span
+          = cart_item_info["count"].to_s
+        | шт.
+        = link_to '+', increment_cart_item_count_path(cart_item.id), method: :put, remote: true, class: 'cart_item_increment'
+        = link_to '-', decrement_cart_item_count_path(cart_item.id), method: :put, remote: true, class: 'cart_item_decrement'
       .total
         strong
           | Сумма:
-        = price_total.to_s + ' руб.'
-.total
+        span
+          = price_total.to_s
+        | руб.
+      .actions
+        = link_to 'Удалить', delete_from_cart_path(cart_item.id), method: :delete
+.total#total_items_sum [data-total="#{items_price_total}"]
   strong
-    | Total:
-  =< items_price_total.to_s + ' руб.'
+    | TOTAL:
+  span =< items_price_total.to_s
+  | руб.
   

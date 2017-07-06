@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  order_status: 
+  ordered_date: 2017-07-06 01:12:43
+  payed_date: 2017-07-06 01:12:43
+  completed_date: 2017-07-06 01:12:43
+
+two:
+  user: two
+  order_status: 
+  ordered_date: 2017-07-06 01:12:43
+  payed_date: 2017-07-06 01:12:43
+  completed_date: 2017-07-06 01:12:43

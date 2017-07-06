@@ -3,7 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new    
+  def new
     super
   end
 
@@ -28,9 +28,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  def create  
-    
-    if params[:user][:juristic_document] != nil 
+  def create
+
+    if params[:user][:juristic_document] != nil
       jur = JuristicDocument.create(:company_full_name=> juristic_params[:company_full_name],
         :company_short_name=> juristic_params[:company_short_name],
         :ceo_name=> juristic_params[:ceo_name],
@@ -47,7 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         :bik=> payment_params[:bik],
         :bank_correspondent_account=> payment_params[:bank_correspondent_account])
         user = User.create!(:juristic_document_id=>jur.id, :payment_information_id => paym.id, :role => 0, :first_name => user_params[:first_name], :last_name => user_params[:last_name],:middle_name => user_params[:middle_name], :email => user_params[:email], :password => params[:user][:password])
-    
+
     else
       generated_password = Devise.friendly_token.first(8)
       jur = JuristicDocument.create(:company_full_name=> ' ',
@@ -68,7 +68,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user = User.create!(:juristic_document_id=>jur.id, :payment_information_id => paym.id, :role => 0, :first_name => user_params[:first_name], :last_name => user_params[:last_name],:middle_name => user_params[:middle_name], :email => user_params[:email], :password => generated_password)
     end
     # puts generated_password
-    # UserMailer.mailer(user, generated_password).deliver_now    
+    # UserMailer.mailer(user, generated_password).deliver_now
   end
 
 
@@ -123,4 +123,3 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-

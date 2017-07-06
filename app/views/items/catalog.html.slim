@@ -160,7 +160,7 @@
                     img alt="Бензин" src="#{image_url 'awesome/02_benzin.svg'}" /
                     span Евро 4
                 .buttons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
-                  a.uk-button href="" title=("Добавить в Корзину") 
+                  = link_to add_to_cart_path(item), method: :post, class: 'uk-button', title: 'Добавить в Корзину'
                     span.cart
                   a.uk-button href="" title=("Добавить в Закладки") 
                     span.heart

@@ -117,6 +117,18 @@ ActiveRecord::Schema.define(version: 20170705221642) do
     t.datetime "updated_at",                 null: false
   end
 
+  create_table "shipment_informations", force: :cascade do |t|
+    t.text     "country"
+    t.text     "city"
+    t.text     "address"
+    t.text     "zip_code"
+    t.boolean  "is_main"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_shipment_informations_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",  null: false
     t.string   "encrypted_password",     default: "",  null: false
@@ -152,6 +164,7 @@ ActiveRecord::Schema.define(version: 20170705221642) do
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "shipment_informations", "users"
   add_foreign_key "users", "juristic_documents"
   add_foreign_key "users", "payment_informations"
 end

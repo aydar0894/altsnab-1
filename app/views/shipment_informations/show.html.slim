@@ -1,0 +1,25 @@
+p#notice
+  = notice
+p
+  strong
+    | Country:
+  = @shipment_information.country
+p
+  strong
+    | City:
+  = @shipment_information.city
+p
+  strong
+    | Address:
+  = @shipment_information.address
+p
+  strong
+    | Zip code:
+  = @shipment_information.zip_code
+p
+  strong
+    | Is main:
+  = @shipment_information.is_main
+= link_to 'Edit', edit_shipment_information_path(@shipment_information)
+|  | 
+= link_to 'Back', shipment_informations_path

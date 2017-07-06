@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+#s.petrov@gmail.com
+#n.ivanov@mail.ru
 if PaymentInformation.count == 0
    paym =  PaymentInformation.new(payment_account: '123456789',bank_name: 'Сбербанк',bik: '555555555',bank_correspondent_account: '999999999')
    jurast =  JuristicDocument.new(

@@ -7,6 +7,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def edit
+    @user = current_user
+    @payment_data = PaymentInformation.find(@user.payment_information_id)
+    # abort @payment_data.inspect
+    @juristic_data = JuristicDocument.find(@user.juristic_document_id)
+  end
+
+  
+  def update    
+    user = current_user
+    juristic = JuristicDocument.find(user.juristic_document_id)
+    payment_data = PaymentInformation.find(user.payment_information_id)
+
+    user.update(user_params)   
+    juristic.update(juristic_params)
+    payment_data.update(payment_params)
+
+    redirect_to '/account'
+  end
+
   # POST /resource
   def create
 
@@ -55,7 +75,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :middle_name, :email)
+      params.require(:user).permit(:first_name, :last_name, :middle_name, :email, :phone_number)
     end
     def juristic_params
       params.require(:user).require(:juristic_document).permit(:company_full_name,:company_short_name,:ceo_name,:legal_address,:postal_address,
@@ -64,16 +84,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def payment_params
       params.require(:user).require(:payment_information).permit(:payment_account,:bank_name,:bik,:bank_correspondent_account)
     end
-end
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
-
-  # PUT /resource
-  # def update
-  #   super
-  # end
+  end
+ 
+  
 
   # DELETE /resource
   # def destroy

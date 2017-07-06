@@ -1,0 +1,17 @@
+.uk-offcanvas-content
+  button.uk-button.uk-button-default.uk-margin-small-right[type="button" uk-toggle="target: #offcanvas-nav-primary"]
+    | Меню
+  #offcanvas-nav-primary[uk-offcanvas="overlay: true"]
+    .uk-offcanvas-bar.uk-flex.uk-flex-column
+      ul.uk-nav.uk-nav-primary.uk-nav-center.uk-margin-auto-vertical
+        li.uk-active
+          a[href="/categories"]
+            | Управление категориями
+        li.uk-nav-divider
+        li.uk-active
+          a[href="/fields"]
+            | Управление характеристиками
+        li.uk-nav-divider
+        li.uk-active
+          a[href="/items"]
+            | Управление товарами

@@ -14,11 +14,7 @@ header uk-sticky=""
               a href="#" 
                 span uk-icon=("icon: question; ratio: 1") 
                 | Справка
-            - if !current_user
-              li
-                = link_to categories_path, method: :get, class: 'dropdown-login'
-                  span uk-icon=("icon: user; ratio: 1") 
-                  | Управление категориями
+            - if !current_user              
               li
                 = link_to new_user_session_path, class: 'dropdown-login'
                   span uk-icon=("icon: user; ratio: 1") 
@@ -36,17 +32,24 @@ header uk-sticky=""
                         button.uk-button.uk-button-emerald Войти
                       .uk-width-2-3.uk-text-right
                         a.uk-button.uk-button-emerald href="login-recover.html"  Забыл пароль
-                    = link_to 'Создать аккаунт', new_user_registration_path, class: 'uk-width-1-1 uk-button uk-button-summer uk-margin-small-top'
-            - else
+                    = link_to 'Создать аккаунт', new_user_registration_path, class: 'uk-width-1-1 uk-button uk-button-summer uk-margin-small-top'            
+            - if current_user and !current_user.is_admin?
               li
                 = link_to account_path, method: :get, class: 'dropdown-login'
                   span uk-icon=("icon: user; ratio: 1") 
                   | Личный Кабинет
+            
               li
-                = link_to categories_path, method: :get, class: 'dropdown-login'
+                = link_to destroy_user_session_path, method: :delete, class: 'dropdown-login'
                   span uk-icon=("icon: user; ratio: 1") 
-                  | Управление категориями
+                  | Выйти
+
+            - if current_user and current_user.is_admin?               
               li
+                = link_to administration_path, method: :get, class: 'dropdown-login'
+                  span uk-icon=("icon: user; ratio: 1") 
+                  | Панель Администратора
+                li
                 = link_to destroy_user_session_path, method: :delete, class: 'dropdown-login'
                   span uk-icon=("icon: user; ratio: 1") 
                   | Выйти

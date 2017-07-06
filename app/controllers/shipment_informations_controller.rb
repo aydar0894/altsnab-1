@@ -1,5 +1,7 @@
 class ShipmentInformationsController < ApplicationController
   before_action :set_shipment_information, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :current_user_shipment!, only: [:show, :edit, :update, :destroy]
 
   # GET /shipment_informations
   # GET /shipment_informations.json
@@ -71,5 +73,9 @@ class ShipmentInformationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def shipment_information_params
       params.require(:shipment_information).permit(:country, :city, :address, :zip_code, :is_main)
+    end
+
+    def current_user_shipment!
+      redirect_to root_path if current_user.id != @shipment_information.user_id
     end
 end

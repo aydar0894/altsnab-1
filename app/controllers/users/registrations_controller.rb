@@ -14,17 +14,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @juristic_data = JuristicDocument.find(@user.juristic_document_id)
   end
 
-  
-  def update    
+
+  def update
     user = current_user
     juristic = JuristicDocument.find(user.juristic_document_id)
     payment_data = PaymentInformation.find(user.payment_information_id)
 
-    user.update(user_params)   
+    user.update(user_params)
     juristic.update(juristic_params)
     payment_data.update(payment_params)
 
-    redirect_to '/account'
+    redirect_to account_path
   end
 
   # POST /resource
@@ -69,6 +69,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     # puts generated_password
     # UserMailer.mailer(user, generated_password).deliver_now
+
+    sign_in(user)
+
+    redirect_to account_path
   end
 
 
@@ -85,8 +89,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       params.require(:user).require(:payment_information).permit(:payment_account,:bank_name,:bik,:bank_correspondent_account)
     end
   end
- 
-  
+
+
 
   # DELETE /resource
   # def destroy

@@ -38,12 +38,12 @@
               .uk-inline.uk-width-1-1
                 span.uk-form-icon.near-password uk-icon=("icon: lock") 
                 .uk-margin
-                  = f.text_field :password, class: 'uk-input', required: true, placeholder: 'Пароль'
+                  = f.password_field :password, class: 'uk-input', required: true, placeholder: 'Пароль'
             div
               .uk-inline.uk-width-1-1
                 span.uk-form-icon.near-password uk-icon=("icon: lock") 
                 .uk-margin
-                   = f.text_field :password_confirmation, class: 'uk-input', required: true, placeholder: 'Подтверждение пароля' 
+                   = f.password_field :password_confirmation, class: 'uk-input', required: true, placeholder: 'Подтверждение пароля' 
          
           .uk-margin
             = f.text_field :first_name, class: 'uk-input', required: true, placeholder: 'Имя'
@@ -56,9 +56,9 @@
           
           .uk-margin.uk-text-left.click-me.label
             label
-              input.uk-checkbox type="checkbox" /
-              | Заполнить юридические сведения
-              span.uk-text-small.uk-display-block Не обязательно              
+              / input.uk-checkbox type="checkbox" /
+              / | Заполнить юридические сведения
+              / span.uk-text-small.uk-display-block Не обязательно              
               .extra.uk-display-block
                 =f.fields_for :juristic_document do |jur_field|
                   .uk-margin
@@ -83,9 +83,9 @@
                     = jur_field.text_field :okato, class: 'uk-input', required: true, placeholder: 'ОКАТО'
           uk-margin.uk-text-left.click-me.label
             label
-              input.uk-checkbox type="checkbox" /
-              | Заполнить платежные данные компании
-              span.uk-text-small.uk-display-block Не обязательно
+              / input.uk-checkbox type="checkbox" /
+              / | Заполнить платежные данные компании
+              / span.uk-text-small.uk-display-block Не обязательно
               .extra.uk-display-block
                 =f.fields_for :payment_information do |paym_field|
                   .uk-margin

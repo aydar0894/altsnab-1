@@ -12,6 +12,9 @@ $ ->
       cart_item = $(this).closest('.cart_item')
       price = cart_item.data('price')
       count = cart_item.data('count')
+      if (sign == -1 && count <= 1)
+        return
+
       new_count = count + 1 * sign
       new_total = price * new_count
       cart_item.data('count', new_count)

@@ -1,6 +1,7 @@
 class CategoryFieldsController < ApplicationController
   before_action :set_category_field, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_admin!
+  
   # GET /category_fields
   # GET /category_fields.json
   def index

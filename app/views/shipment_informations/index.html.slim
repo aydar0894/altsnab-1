@@ -1,20 +1,20 @@
 p#notice
   = notice
 h1
-  | Shipment Informations
-table
+  | Адреса доставки
+table.uk-table.uk-table-striped
   thead
     tr
       th
-        | Country
+        | Страна
       th
-        | City
+        | Город
       th
-        | Address
+        | Адрес
       th
-        | Zip code
+        | Почтовый индекс
       th
-        | Is main
+        | Основной
       th[colspan="3"]
   tbody
     - @shipment_informations.each do |shipment_information|
@@ -30,10 +30,10 @@ table
         td
           = shipment_information.is_main
         td
-          = link_to 'Show', shipment_information
-        td
-          = link_to 'Edit', edit_shipment_information_path(shipment_information)
-        td
-          = link_to 'Destroy', shipment_information, method: :delete, data: { confirm: 'Are you sure?' }
+          => link_to 'Показать', shipment_information
+          | /
+          =<> link_to 'Изменить', edit_shipment_information_path(shipment_information)
+          | /
+          =< link_to 'Удалить', shipment_information, method: :delete, data: { confirm: 'Вы уверены?' }
 br
-= link_to 'New Shipment Information', new_shipment_information_path
+= link_to 'Добавить адрес доставки', new_shipment_information_path

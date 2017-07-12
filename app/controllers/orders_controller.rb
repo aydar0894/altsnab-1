@@ -30,7 +30,13 @@ class OrdersController < ApplicationController
     @cart_items_ids = @cart_items_ids.select do |ci|
       !ci.nil?
     end
+    @items_price_total = 0
     @cart_items = Item.find(@cart_items_ids)
+    @cart_items.each_with_index do |cart_item, index|
+      cart_item_info = @cart_items_info[index]
+      price_total = cart_item.price * cart_item_info['count']
+      @items_price_total += price_total
+    end
   end
 
 end

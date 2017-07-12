@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Subitem Fields</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subitem_fields.each do |subitem_field| %>
+      <tr>
+        <td><%= subitem_field.name %></td>
+        <td><%= subitem_field.description %></td>
+        <td><%= link_to 'Show', subitem_field %></td>
+        <td><%= link_to 'Edit', edit_subitem_field_path(subitem_field) %></td>
+        <td><%= link_to 'Destroy', subitem_field, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subitem Field', new_subitem_field_path %>

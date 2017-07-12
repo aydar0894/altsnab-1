@@ -1,0 +1,2 @@
+class SubitemField < ApplicationRecord
+end

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @subitem_field.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @subitem_field.description %>
+</p>
+
+<%= link_to 'Edit', edit_subitem_field_path(@subitem_field) %> |
+<%= link_to 'Back', subitem_fields_path %>

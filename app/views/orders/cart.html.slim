@@ -1,15 +1,15 @@
-- items_price_total = 0
-h2.total#total_items_sum [data-total="#{items_price_total}"]
+
+h2.total#total_items_sum [data-total="#{@items_price_total}"]
   strong
     | TOTAL:
-  span =< items_price_total.to_s
+  span =< @items_price_total.to_s
   | руб.
 br
 .uk-grid-small class="uk-child-width-1-5@l" uk-grid="" 
   - @cart_items.each_with_index do |cart_item, index|
     - cart_item_info = @cart_items_info[index]
     - price_total = cart_item.price * cart_item_info['count']
-    - items_price_total += price_total
+    - @items_price_total += price_total
     .product.cart_item [data-item-id="#{cart_item.id}" data-price="#{cart_item.price}" data-count="#{cart_item_info['count']}"]
       .wrapper
         = link_to item_path(cart_item), class: 'image'

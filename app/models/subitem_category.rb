@@ -1,0 +1,2 @@
+class SubitemCategory < ApplicationRecord
+end

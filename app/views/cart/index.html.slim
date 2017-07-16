@@ -1,0 +1,45 @@
+h2.total#total_items_sum [data-total="#{@price_total}"]
+  strong
+    | TOTAL:
+  span =< @price_total.to_s
+  | руб.
+br
+.uk-grid-small class="uk-child-width-1-5@l" uk-grid="" 
+  - @cart_items.each_with_index do |cart_item, index|
+    .product.cart_item [data-item-id="#{cart_item.item.id}" data-price="#{cart_item.item.price}" data-count="#{cart_item.count}"]
+      .wrapper
+        = link_to item_path(cart_item), class: 'image'
+          = image_tag cart_item.item.image.url(:medium), height:'200', width: '280', alt: ''
+          .stars
+            span
+            span
+            span
+            span.grey
+            span.grey
+            | (3)
+        .info
+          = link_to cart_item.item.name, item_path(cart_item), class: 'href'
+          .introtext = cart_item.item.description
+          .price
+            div Стоимость:
+            span = cart_item.item.price_formatted
+            sup руб.
+          .count.price
+            div Кол-во:
+            span
+              = cart_item.count.to_s
+            | шт.
+          .total.price
+            div Сумма:
+            span
+              = cart_item.item.price * cart_item.count
+            | руб.
+          br
+          .buttons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
+            = link_to cart_increment_item_count_path(cart_item.item.id), method: :put, remote: true, class: 'cart_item_increment', title: 'Увеличить кол-во'
+              span.plus +
+            = link_to cart_decrement_item_count_path(cart_item.item.id), method: :put, remote: true, class: 'cart_item_decrement', title: 'Уменьшить кол-во'
+              span.minus -
+            = link_to cart_delete_item_path(cart_item.item.id), method: :delete, class: 'cart_item_delete', title: 'Удалить из корзины'
+              span.delete x
+  

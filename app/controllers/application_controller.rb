@@ -1,33 +1,42 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  def add_item_to_cart(item)
-    (session[:cart] ||= []) << {item_id: item.id, count: 1, additional_equipment: []}
-  end
+  def current_cart
+    if get_cart_id && !current_user
+      order = Order.find(get_cart_id)
+      return order if order&.cart?
+    end
 
-  def delete_item_from_cart(item_id)
-    session[:cart] = session[:cart].select do |cart_item|
-      cart_item['item_id'].to_i != item_id.to_i
+    if current_user
+      order = Order.find_by(user_id: current_user.id, status: 0)
+      if order&.cart?
+        set_cart_id(order&.id)
+        return order
+      end
+
+      order = Order.create(user_id: current_user.id, status: 0)
+      set_cart_id(order.id)
+      return order
+    else
+      order = Order.create(user_id: nil, status: 0)
+      set_cart_id(order.id)
+      return order
     end
   end
 
-  def increment_item_count_in_cart(item_id)
-    session[:cart] = session[:cart].each do |cart_item|
-      cart_item['count'] = cart_item['count'].to_i + 1 if cart_item['item_id'] == item_id.to_i
-    end
+  def set_cart_id(cart_id)
+    cookies.permanent.signed[:cart_id] = cart_id
   end
 
-  def decrement_item_count_in_cart(item_id)
-    session[:cart] = session[:cart].each do |cart_item|
-      cart_item['count'] = cart_item['count'].to_i - 1 if cart_item['item_id'] == item_id.to_i && cart_item['count'].to_i > 1
-    end
+  def get_cart_id
+    cookies.signed[:cart_id]
   end
 
-  def get_cart_items
-    (session[:cart] ||= [])
-  end
-  
   protected
+
+  def response_200!
+    render status: 200, json: {status: 'ok'}.to_json
+  end
 
   def is_admin!
   	if (current_user and !current_user.is_admin?)

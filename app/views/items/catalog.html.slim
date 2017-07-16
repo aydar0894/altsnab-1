@@ -19,84 +19,7 @@
                 - @child_categories[cat.id].each do |subcat| 
                   li
                     = link_to subcat.name, catalog_category_path(subcat.id)
-      / li.uk-open
-      /   h4.uk-accordion-title Спецтехника для нефти и газа
-      /   .uk-accordion-content.uk-margin-remove
-      /     ul
-      /       li
-      /         a href="#"  Топливозаправщики и автоцистерны на шасси КАМАЗ
-      /       li
-      /         a href="#"  Мобильные подогреватели
-      /       li
-      /         a href="#"  Передвижная паропромысловая установка ППУ
-      /       li
-      /         a href="#"  Передвижные мобильные комплексы
-      /       li
-      /         a href="#"  Цементировочный агрегат ЦА 320 КАМАЗ
-      /       li
-      /         a href="#"  Агрегат (установка) для депарафинизации скважин
-      / li
-      /   h4.uk-accordion-title Тягачи, прицепы и автопоезда
-      /   .uk-accordion-content.uk-margin-remove
-      /     ul
-      /       li
-      /         a href="#"  Седельные тягачи
-      /       li
-      /         a href="#"  Прицепы и полуприцепы
-      /       li
-      /         a href="#"  Автопоезда и автофургоны
-      / li
-      /   h4.uk-accordion-title Строительная техника
-      /   .uk-accordion-content.uk-margin-remove
-      /     ul
-      /       li
-      /         a href="#"  Самосвалы
-      /       li
-      /         a href="#"  Самосвальные полуприцепы Grunwald
-      /       li
-      /         a href="#"  Автокраны
-      /       li
-      /         a href="#"  Автобетоносмесители
-      /       li
-      /         a href="#"  Автомобильный бетононасос
-      / li
-      /   h4.uk-accordion-title Специальная техника
-      /   .uk-accordion-content.uk-margin-remove
-      /     ul
-      /       li
-      /         a href="#"  Снегоболотоход БОРЕЙ-3301
-      /       li
-      /         a href="#"  Бортовые автомобили с КМУ
-      /       li
-      /         a href="#"  Бурильно-крановые машины
-      /       li
-      /         a href="#"  Вахтовые автобусы на базе КАМАЗ
-      /       li
-      /         a href="#"  Грузопассажирский автобус КАМАЗ (ПАЗ)
-      / li
-      /   h4.uk-accordion-title Комплектация и переоборудование
-      /   .uk-accordion-content.uk-margin-remove
-      /     ul
-      /       li
-      /         a href="#"  Системы мониторинга
-      /       li
-      /         a href="#"  Цифровые тахографы на грузовые автомобили
-      /       li
-      /         a href="#"  3Переоборудование под перевозку опасных грузов
-      /       li
-      /         a href="#"  Жидкостные отопители
-      /       li
-      /         a href="#"  Воздушные отопители
-      /       li
-      /         a href="#"  Крано-манипуляторная установка
-      /       li
-      /         a href="#"  ГЛОНАСС
-      /       li
-      /         a href="#"  Переоборудование на односкатную
-      /       li
-      /         a href="#"  Отопители
-      /       li
-      /         a href="#"  Запчасти
+                    
     ul.tm-list-leader.uk-list
       li
         a href="#" 
@@ -113,14 +36,6 @@
           span.badge.discount> %
           | Скидки
   .uk-width-expand
-    / .jcarousel-wrapper
-    /   .jcarousel
-    /     ul
-    /       li
-    /         img alt="" height="304" src="#{image_url 'banners/slide-1.jpg'}" width="958" /
-    /   a.jcarousel-control-prev href="#"  &lsaquo;
-    /   a.jcarousel-control-next href="#"  &rsaquo;
-    /   p.jcarousel-pagination
     ul.uk-subnav.uk-subnav-pill.tm-product-swbutton uk-switcher="animation:uk-animation-fade;connect:.tm-product-switch" 
       li
         a href="#"  Новинки
@@ -160,7 +75,7 @@
                     img alt="Бензин" src="#{image_url 'awesome/02_benzin.svg'}" /
                     span Евро 4
                 .buttons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
-                  = link_to add_to_cart_path(item), method: :post, class: 'uk-button', title: 'Добавить в Корзину'
+                  = link_to cart_add_item_path(item), method: :post, class: 'uk-button', title: 'Добавить в Корзину'
                     span.cart
                   a.uk-button href="" title=("Добавить в Закладки") 
                     span.heart

@@ -12,6 +12,14 @@ class Order < ApplicationRecord
     order_item = self.order_items.create(item_id: item_id, count: 1)
   end
 
+  def add_item_with_subitems(item_id, count, subitems)
+    order_item = self.order_items.create(item_id: item_id, count: 1)
+    subitems.each do |key, subitem|
+      item_subitems = order_item.order_item_subitems.create(order_item_id: order_item.id, subitem_id: subitem[:id], count: 1)
+    end
+    #create subitems
+  end
+
   def delete_item(item_id)
     self.order_items.find_by(item_id: item_id)&.delete
     self.save

@@ -1,0 +1,21 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @subitem.name
+p
+  strong
+    | Description:
+  = @subitem.description
+p
+  strong
+    | Price:
+  = @subitem.price
+p
+  strong
+    | Subitem category:
+  = @subitem.subitem_category.name
+= link_to 'Edit', edit_subitem_path(@subitem)
+|  | 
+= link_to 'Back', subitems_path

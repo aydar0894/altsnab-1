@@ -32,5 +32,15 @@
           br
           = subitem.price
           br
+          
+      #field
+        = form_for(@item, html: { multipart: true }) do |f|
+          = f.label :subitems_for_category, "Доп. оборудование", class: "control-label"
+          div
+            = f.fields_for :subitems_for_category do |subitem|
+              - @subitem = subitem
+              = render 'subitems_for_category_fields', f: subitem
+            .links
+              = link_to_add_association "Добавить поле".html_safe, f, :subitems_for_category
       - if current_user&.is_admin?
         = link_to 'Edit', edit_item_path(@item)

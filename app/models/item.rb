@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :category
+  has_many :subitems_for_category
+  accepts_nested_attributes_for :subitems_for_category, reject_if: :all_blank, allow_destroy: true
 
   has_attached_file :image, styles: { high: "840x600>", medium: "280x200>", thumb: "140x100>" },
     default_url: ":style/missing_item_image.png"
@@ -15,6 +17,17 @@ class Item < ApplicationRecord
     else
       return self.description
     end
+  end
+
+  def subitems_for_category
+    # @subitems = []
+    # @subitem_items = SubitemItemCategory.where(category_id: self.category_id)
+
+    # @subitem_items.each do |s|
+    #   @subitems.push(Subitem.find(s.subitem_id))
+    # end
+
+    Subitem.joins("INNER JOIN subitem_item_categories ON subitems.id = subitem_item_categories.subitem_id").where(subitem_item_categories: {category_id: self.category_id})
   end
 
 end

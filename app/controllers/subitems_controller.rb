@@ -41,6 +41,8 @@ class SubitemsController < ApplicationController
   # PATCH/PUT /subitems/1.json
   def update
     respond_to do |format|
+      #params[:subitem][:subitem_category_id] = subitem_cat_params[:id]
+      #puts params[:subitem][:subitem_category_id]
       if @subitem.update(subitem_params)
         format.html { redirect_to @subitem, notice: 'Subitem was successfully updated.' }
         format.json { render :show, status: :ok, location: @subitem }
@@ -69,6 +71,10 @@ class SubitemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subitem_params
-      params.require(:subitem).permit(:name, :description, :price, :subitem_category_id)
+      params.require(:subitem).permit(:name, :description, :price, :subitem_category_id, subitem_item_categories_attributes: [:id, :subitem_id, :category_id, :_destroy])
     end
+
+    # def subitem_cat_params
+    #   params.require(:subitem).permit(:id, )
+    # end
 end

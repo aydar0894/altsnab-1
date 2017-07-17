@@ -1,0 +1,35 @@
+p#notice
+  = notice
+h1
+  | Subitems
+table
+  thead
+    tr
+      th
+        | Name
+      th
+        | Description
+      th
+        | Price
+      th
+        | Subitem category
+      th[colspan="3"]
+  tbody
+    - @subitems.each do |subitem|
+      tr
+        td
+          = subitem.name
+        td
+          = subitem.description
+        td
+          = subitem.price
+        td
+          = subitem.subitem_category
+        td
+          = link_to 'Show', subitem
+        td
+          = link_to 'Edit', edit_subitem_path(subitem)
+        td
+          = link_to 'Destroy', subitem, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Subitem', new_subitem_path

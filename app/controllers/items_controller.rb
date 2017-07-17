@@ -39,13 +39,9 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @field_values = CategoryFieldValue.joins(:category_field).where(item_id: @item.id, category_fields: { category_id: @item.category_id }).all.select{ |fv| !fv.category_field.nil? }
-    
-    @subitems = []
-    @subitem_items = SubitemItemCategory.where(category_id: @item.category_id)
 
-    @subitem_items.each do |s|
-      @subitems.push(Subitem.find(s.subitem_id))
-    end
+    @available_subitems = @item.subitems_for_category  
+
   end
 
   # GET /items/new

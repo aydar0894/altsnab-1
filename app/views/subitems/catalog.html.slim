@@ -1,0 +1,53 @@
+.uk-grid.uk-grid-medium
+  aside
+    h3 Каталог продукции
+    ul.tm-list-category.uk-margin-remove uk-accordion=("multiple: true") 
+      - @head_categories.each_with_index do |cat, index|
+        - if cat.id == @side_opened_category_id || (@side_opened_category_id.nil? && index == 0)
+          li.uk-open
+            h4.uk-accordion-title = cat.name
+            .uk-accordion-content.uk-margin-remove
+              ul
+                - @child_categories[cat.id].each do |subcat| 
+                  li
+                    = link_to subcat.name, catalog_category_path(subcat.id)
+        - else
+          li
+            h4.uk-accordion-title = cat.name
+            .uk-accordion-content.uk-margin-remove
+              ul
+                - @child_categories[cat.id].each do |subcat| 
+                  li
+                    = link_to subcat.name, catalog_category_path(subcat.id)   
+      li
+        = link_to sub_catalog_category_path
+          h4.uk-accordion-title  Дополнительное оборудование
+          
+  .uk-width-expand
+    ul.uk-subnav.uk-subnav-pill.tm-product-swbutton uk-switcher="animation:uk-animation-fade;connect:.tm-product-switch" 
+      li
+        a href="#"  Новинки
+      li
+        a href="#"  Под заказ
+      li
+        a href="#"  Скидки
+    .uk-switcher.tm-product-switch.uk-margin
+      .uk-grid-small class="uk-child-width-1-4@l" uk-grid="" 
+        - @subitems.each do |subitem|
+          .product
+            .wrapper
+              = link_to subitem_path(subitem) , class: 'href'  
+                = subitem.name             
+                .stars
+                  span
+                  span
+                  span
+                  span.grey
+                  span.grey
+                  | (3)
+              .info                
+                .introtext = subitem.description
+                .price
+                  | от
+                  span = subitem.price
+                  sup руб.

@@ -12,6 +12,22 @@ class SubitemsController < ApplicationController
   def show
   end
 
+
+  def catalog
+     @child_categories = {}
+     @all_categories = Category.all
+     @head_categories = @all_categories.select { |cat| cat.parent_category_id.nil? }
+     @all_categories.each do |cat|
+      if !cat.parent_category_id.nil?
+        if @child_categories[cat.parent_category_id].nil?
+          @child_categories[cat.parent_category_id] = [cat]
+        else
+          @child_categories[cat.parent_category_id] << cat
+        end
+      end
+    end
+    @subitems = Subitem.all
+  end
   # GET /subitems/new
   def new
     @subitem = Subitem.new

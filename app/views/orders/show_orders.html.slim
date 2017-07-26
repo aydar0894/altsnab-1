@@ -1,0 +1,25 @@
+= render 'administrator_panel/sidebar'
+h1
+  | Категории
+table.uk-table.uk-table-striped
+  thead
+    tr
+      th
+        | ID пользователя
+      th
+        | Дата заказа
+      th
+        | Статус
+      th[colspan="3"]
+  tbody
+    - @orders&.each do |order|
+      tr
+        td
+          = order.user_id
+        td
+          = order.ordered_date
+        td
+          = order.status
+        td
+        
+          / => link_to 'Показать', order

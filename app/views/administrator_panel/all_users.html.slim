@@ -1,0 +1,6 @@
+= render 'administrator_panel/sidebar'
+- @users.each do |user|
+  tr   
+    td
+      = link_to "#{user.first_name} #{user.last_name}", administration_user_info_path(user.id)
+    br

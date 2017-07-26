@@ -14,6 +14,7 @@ class Order < ApplicationRecord
 
   def add_item_with_subitems(item_id, count, subitems)
     order_item = self.order_items.create(item_id: item_id, count: 1)
+
     subitems.each do |key, subitem|
       item_subitems = order_item.order_item_subitems.create(order_item_id: order_item.id, subitem_id: subitem[:id], count: 1)
     end
@@ -21,7 +22,7 @@ class Order < ApplicationRecord
   end
 
   def delete_item(item_id)
-    self.order_items.find_by(item_id: item_id)&.delete
+    self.order_items.find_by(item_id: item_id)&.destroy
     self.save
   end
 
@@ -44,7 +45,7 @@ class Order < ApplicationRecord
     order_item&.save
   end
 
-  def delete_all
+  def clear
     self.order_items.destroy_all
     self.save
   end

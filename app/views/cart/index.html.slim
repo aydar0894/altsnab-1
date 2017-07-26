@@ -1,7 +1,7 @@
 h2.total#total_items_sum [data-total="#{@price_total}"]
   strong
     | TOTAL:
-  span =< @price_total.to_s
+  span =< @price_total.to_i
   | руб.
 br
 .uk-grid-small class="uk-child-width-1-5@l" uk-grid="" 
@@ -35,6 +35,33 @@ br
               = cart_item.item.price * cart_item.count
             | руб.
           br
+          - @subitems_price = cart_item.order_subitems.reduce(0) {|sum, x| sum += x.subitem.price}
+          .subitems-price
+            strong Сумма доп. оборудований:
+            span
+              = @subitems_price.to_i
+            | руб.
+          .subitems [data-price-total="#{@subitems_price.to_i}"]
+            / = cart_item.order_subitems.count
+            / .title
+            /   | Доп. оборудование:
+            / - if cart_item.order_subitems.blank?
+            /   | Не добавлено
+            / - else
+            /   ul
+            /     - cart_item.order_subitems.each do |order_subitem|
+            /       li 
+            /         = order_subitem.subitem.name
+                    / =< link_to '[-]', cart_delete_subitem_path(order_subitem.id), method: :delete
+            = form_for(cart_item, url: cart_update_subitem_path(cart_item.id), method: :post,  html: { multipart: true }) do |f|
+              - @available_subitems = cart_item.item.subitems_for_category
+              = f.label :order_item_subitems, "Доп. оборудование", class: "control-label"
+              div
+                = f.fields_for :order_item_subitems do |order_subitem|               
+                  = render 'order_item_subitem_fields', f: order_subitem
+                .links
+                  = link_to_add_association "[+]".html_safe, f, :order_item_subitems
+              button Сохранить доп.оборудование
           .buttons.uk-child-width-1-3.uk-grid-collapse uk-grid="" 
             = link_to cart_increment_item_count_path(cart_item.item.id), method: :put, remote: true, class: 'cart_item_increment', title: 'Увеличить кол-во'
               span.plus +

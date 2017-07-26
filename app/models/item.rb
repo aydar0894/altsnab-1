@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   def price_formatted
-    self.price.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse
+    return self.price.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse
   end
 
   def fixed_length_description

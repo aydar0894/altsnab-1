@@ -1,0 +1,5 @@
+- @orders.each do |order|
+  tr   
+    td
+      = link_to "#{order.id} #{order.ordered_date} #{order.status}", account_show_order_path(order.id)
+    br

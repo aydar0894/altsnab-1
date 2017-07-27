@@ -1,0 +1,28 @@
+- @order_items.each do |order_item| 
+  tr   
+  	=< link_to 'Повторный заказ', reorder_path, method: :post, class: 'uk-button uk-button-emerald uk-margin-top'
+
+  	br
+
+    td
+      = order_item.item_id
+    br
+    td 
+      = order_item.count
+    br
+	td	 
+	  = order_item.price
+	
+	div Subitems:
+
+	-order_item.order_item_subitems.each do |subitem|
+	  tr
+	  	td 
+	  	  = subitem.subitem_id
+	  	br
+	  	td 
+	      = subitem.count
+	    br
+		td 
+		  = subitem.price
+

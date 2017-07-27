@@ -59,7 +59,7 @@ class Order < ApplicationRecord
     order_item&.save
   end
 
-  def delete_all
+  def clear
     self.order_items.destroy_all
     self.save
   end

@@ -1,6 +1,31 @@
 class OrdersController < ApplicationController
   # respond_to :json, :js, only: [:increment_cart_item_count]
 
+  before_action :is_admin!, only: [:show_orders,:show]
+
+
+  def reorder
+    @order = Order.find(params[:order_id])
+    current_cart.clear
+    
+    @order.order_items.each do |order_item|
+      subitems_hash = {}
+      order_item.order_item_subitems.each_with_index do |subitem, index| 
+        subitems_hash[index] = {id: subitem.subitem_id}
+      end
+      current_cart.add_item_with_subitems(order_item.item_id, order_item.count, subitems_hash)
+    end
+    redirect_to cart_path
+  end
+
+  def show_orders
+    @orders = Order.all
+  end
+
+  def show
+    @order = params[:order]
+  end
+
   # POST /orders/add_to_cart/:item_id
   def add_to_cart
     item = Item.find(params[:item_id])

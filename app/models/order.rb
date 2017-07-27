@@ -12,17 +12,32 @@ class Order < ApplicationRecord
     order_item = self.order_items.create(item_id: item_id, count: 1)
   end
 
+
+  def update_subitems(order_item_id, subitems)
+    OrderItem.find(order_item_id)&.update(subitems) if subitems
+  end
+
+  # @param [Hash] subitems - hash('0'=>{:id, ..},1=>{:id, ..},..)
   def add_item_with_subitems(item_id, count, subitems)
     order_item = self.order_items.create(item_id: item_id, count: 1)
+
+    # add subitems to order_item
     subitems.each do |key, subitem|
-      item_subitems = order_item.order_item_subitems.create(order_item_id: order_item.id, subitem_id: subitem[:id], count: 1)
+      item_subitems = order_item.order_item_subitems.create(
+        order_item_id: order_item.id,
+        subitem_id: subitem[:id],
+        count: 1
+      )
     end
-    #create subitems
   end
 
   def delete_item(item_id)
-    self.order_items.find_by(item_id: item_id)&.delete
+    self.order_items.find_by(item_id: item_id)&.destroy
     self.save
+  end
+
+  def delete_subitem(order_subitem_id)
+    OrderItemSubitem.delete(order_subitem_id)
   end
 
   def increment_item_count(item_id)

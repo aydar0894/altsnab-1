@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  helper_method :current_cart
 
   def current_cart
     if get_cart_id && !current_user

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :subitems
+  resources :subitem_categories
+  resources :subitem_fields
   resources :shipment_informations
   resources :category_field_values
   resources :items
@@ -16,7 +19,9 @@ Rails.application.routes.draw do
 
   get '/item_category_fields/:item_id/:category_id', to: 'category_fields#item_category_fields', as: :item_category_fields
   get '/catalog(/:category_id)', to: 'items#catalog', as: :catalog_category
+  get '/sub_catalog(/:category_id)', to: 'subitems#catalog', as: :sub_catalog_category
 
+  post '/cart/add_item_with_subitems/:item_id', to: 'cart#add_item_with_subitems', as: :cart_add_item_with_subitems
   get '/cart', to: 'cart#index', as: :cart
   post '/cart/add_item/:item_id', to: 'cart#add_item', as: :cart_add_item
   post '/cart/update_subitems/:order_item_id', to: 'cart#update_subitems', as: :cart_update_subitem

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Subitem Categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subitem_categories.each do |subitem_category| %>
+      <tr>
+        <td><%= subitem_category.name %></td>
+        <td><%= link_to 'Show', subitem_category %></td>
+        <td><%= link_to 'Edit', edit_subitem_category_path(subitem_category) %></td>
+        <td><%= link_to 'Destroy', subitem_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subitem Category', new_subitem_category_path %>

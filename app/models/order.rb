@@ -12,6 +12,7 @@ class Order < ApplicationRecord
     order_item = self.order_items.create(item_id: item_id, count: 1)
   end
 
+
   def update_subitems(order_item_id, subitems)
     OrderItem.find(order_item_id)&.update(subitems) if subitems
   end

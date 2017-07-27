@@ -19,6 +19,8 @@
                 - @child_categories[cat.id].each do |subcat| 
                   li
                     = link_to subcat.name, catalog_category_path(subcat.id)
+              ul                
+                = link_to 'Дополнительное оборудование', sub_catalog_category_path
                     
     ul.tm-list-leader.uk-list
       li

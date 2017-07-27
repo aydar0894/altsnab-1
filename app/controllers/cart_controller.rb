@@ -28,10 +28,12 @@ class CartController < ApplicationController
   end
 
   # POST /cart/add_item_with_subitems/:item_id
-  def add_item_with_subitems
+  def add_item_with_subitems  
+
     current_cart.add_item_with_subitems(
-      item_id: params[:item_id],
-      count: params[:count]
+      params[:item_id],
+      params[:count],
+      params[:item][:selected_subitems_attributes]
     )
   end
 
